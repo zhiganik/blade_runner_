@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f3723627d144ec9199dac0c65a2315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  livingParticlesAudioSource: {fileID: 0}
 --- !u!114 &7236131594403854620
 MonoBehaviour:
   m_ObjectHideFlags: 0

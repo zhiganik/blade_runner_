@@ -627,7 +627,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalPosition.x
@@ -669,6 +669,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2164209549763575914, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
+      propertyPath: chunkPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164209549763575914, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
+      propertyPath: chunkPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1046913516203357978, guid: d2683d95b62b4d248af121a4d95fb491, type: 3}
     - target: {fileID: 2164209549763575915, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_Name
       value: ChunkSystem
@@ -766,7 +774,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 53.66, y: 47.02, z: -3.616}
 --- !u!1 &1754998787
 GameObject:

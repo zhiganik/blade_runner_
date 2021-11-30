@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 5662673174210834758}
+  noga: {fileID: 5521734935833732295}
 --- !u!1001 &4721804668445022683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -491,5 +492,10 @@ Transform:
 --- !u!95 &1565705011275104042 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6070210447673108209, guid: 78ba6c0d019652b4ab972a3795cebbbe, type: 3}
+  m_PrefabInstance: {fileID: 4721804668445022683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5521734935833732295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 947476653608123676, guid: 78ba6c0d019652b4ab972a3795cebbbe, type: 3}
   m_PrefabInstance: {fileID: 4721804668445022683}
   m_PrefabAsset: {fileID: 0}

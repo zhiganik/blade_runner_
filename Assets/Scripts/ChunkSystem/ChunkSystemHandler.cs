@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AudioSystem.AudioService;
 using Enums;
 using InputSystem;
 using ObserverSystem;
@@ -20,7 +21,10 @@ namespace ChunkSystem
         [SerializeField] private List<ChunkPlatform> currentSpawnedChunks;
         
         private Pool<ChunkPlatform>[] _platformPool;
+        
         private CameraTest _player;
+        private AudioSystemHandler _audioSystemHandler;
+        
         private readonly List<INotifyListener<ChunkCreationType>> _notifyListeners = 
             new List<INotifyListener<ChunkCreationType>>();
         
@@ -29,9 +33,10 @@ namespace ChunkSystem
         private const float PositionTolerance = 10f;
         
         [Inject]
-        private void Construct(CameraTest runnerControl)
+        private void Construct(CameraTest runnerControl, AudioSystemHandler audioSystemHandler)
         {
             _player = runnerControl;
+            _audioSystemHandler = audioSystemHandler;
         }
         
         private void Awake()
@@ -66,7 +71,6 @@ namespace ChunkSystem
 
         private void Update()
         {
-            //currentSpawnedChunks[0];
             if (_player.transform.position.z > GetFirstSpawnedChunkEndPosition().z + PositionTolerance)
             {
                 NotifySubscribers(ChunkCreationType.RemoveChunk);
@@ -122,6 +126,7 @@ namespace ChunkSystem
             targetPlatform.PoolID = poolID;
             SubscribeOnPlatformResetEvent(targetPlatform);
             currentSpawnedChunks.Add(targetPlatform);
+            targetPlatform.InitializeChunkData(_audioSystemHandler, _player);
             targetPlatform.Activate();
         }
 
