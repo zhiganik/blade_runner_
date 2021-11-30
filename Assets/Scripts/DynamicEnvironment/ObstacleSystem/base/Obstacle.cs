@@ -9,6 +9,7 @@ namespace BladeRunner
     {
         TestSphere,
         TestCube,
+        TestCylinder,
     }
     public abstract class Obstacle : MonoBehaviour, IPoolObject
     {
@@ -17,9 +18,8 @@ namespace BladeRunner
         public int PoolID { get; set; }
         public ObstacleType Type => type;
         public int StartCountInPool => startCountInPool;
-        protected Rigidbody RigidBody { get;  set; }
-        public abstract void Spawn(Vector3 spawnPosition, Vector3 runnerPosition,
-                                   Vector3 forceDir, BoxCollider platformCollider);
+        public Rigidbody RigidBody { get;  protected set; }
+        public abstract void Spawn(Vector3 spawnPosition, Vector3 runnerPosition, BoxCollider platformCollider);
         public void Reset()
         {
             gameObject.SetActive(false);
