@@ -1,0 +1,22 @@
+using PoolFactory;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace BladeRunner
+{
+    public class TestSphere : Obstacle
+    {
+        private void OnEnable()
+        {
+            RigidBody = gameObject.GetComponent<Rigidbody>();
+        }
+
+        public override void Spawn(Vector3 spawnPosition, Vector3 runnerPosition, BoxCollider platformCollider)
+        {
+            gameObject.SetActive(true);
+            transform.position = spawnPosition;
+            RigidBody.useGravity = true;
+        }
+    }
+}

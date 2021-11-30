@@ -1,3 +1,4 @@
+using AudioSystem.AudioVisualizer;
 using ChunkSystem;
 using InputSystem;
 using PoolFactory;
@@ -8,18 +9,18 @@ using Zenject;
 
 namespace BladeRunner
 {
-    public class ObstacleSystem : MonoBehaviour
+    public class ObstacleSystem : MonoBehaviour, IObstacleSystemService
     {
         [Header("Chunk Tools")]
         [SerializeField] private int startChunkCount;
         [Space(5)]
         [SerializeField] private Obstacle[] obstaclePrefabs;
-        [SerializeField] private List<Obstacle> currentSpawnedObstacles;
 
         private Dictionary<ObstacleType, Pool<Obstacle>> poolDict = new Dictionary<ObstacleType, Pool<Obstacle>>();
         private CameraTest _player;
         private IChunkSystemService _chunkSystemHandler;
-        //private 
+
+        float prevMom;
 
         [Inject]
         private void Construct(CameraTest runnerControl, IChunkSystemService chunkSystemHandler)
@@ -35,46 +36,119 @@ namespace BladeRunner
 
         private void Start()
         {
-            StartCoroutine(SpawnRandomObstacles());
+            prevMom = Time.time;
+            //StartCoroutine(SpawnRandomObstacles());
+            StartCoroutine(KickBeatRoutine(ObstacleType.TestCube));
+            StartCoroutine(SnareBeatRoutine(ObstacleType.TestSphere));
+            StartCoroutine(HatBeatRoutine(ObstacleType.TestCylinder));
         }
+
         private void InitializePool()
         {
             for (var index = 0; index < obstaclePrefabs.Length; index++)
             {
                 var chunk = obstaclePrefabs[index];
                 poolDict[chunk.Type] =
-                    new Pool<Obstacle>(new PrefabPoolFactory<Obstacle>(chunk.gameObject), chunk.StartCountInPool);;
+                    new Pool<Obstacle>(new PrefabPoolFactory<Obstacle>(chunk.gameObject), chunk.StartCountInPool);
             }
         }
 
-        private Obstacle SpawnObstackle(ObstacleType type, Vector3 spawnPosition, Vector3 force = default)
+        public Obstacle SpawnObstacle(ObstacleType type, Vector3 spawnPosition)
         {
             Obstacle obstacle = poolDict[type].Allocate();
-            obstacle.Spawn(spawnPosition, _player.transform.position, force, _chunkSystemHandler.GetFirstPlatform().CurrentGroundCollider);
+            obstacle.Spawn(spawnPosition, _player.transform.position, _chunkSystemHandler.GetFirstPlatform().CurrentGroundCollider);
             return obstacle;
         }
+        public Obstacle SpawnObstacle(ObstacleType type, Vector3 spawnPosition, float force)
+        {
+            Obstacle obstacle = SpawnObstacle(type, spawnPosition);
+            obstacle.RigidBody.velocity =
+                (_player.transform.position - obstacle.transform.position).normalized * force;
+            return obstacle;
+        }
+        public void DestroyObstacle(Obstacle obstacle)
+        {
+            obstacle.Reset();
+            poolDict[obstacle.Type].Release(obstacle);
+        }
+
+        //private IEnumerator SpawnRandomObstacles()
+        //{
+        //    while (true)
+        //    {
+        //        //ObstacleType type;
+        //        //int rand = Random.Range(-2, 2);
+        //        //Obstacle obstacle;
+        //        //if (rand >= 0)
+        //        //{
+        //        //    type = ObstacleType.TestCube;
+        //        //    obstacle = SpawnObstacle(type, _player.transform.position + new Vector3(0f, 2f, 15f));
+        //        //}
+        //        //else
+        //        //{
+        //        //    type = ObstacleType.TestSphere;
+        //        //    obstacle = SpawnObstacle(type, _player.transform.position + new Vector3(0f, 2f, 25f), 50f);
+        //        //}
+        //        yield return new WaitUntil(() => AllowSpawn(AudioBandType.Bass));
+        //        Obstacle obstacle = SpawnObstacle(ObstacleType.TestCube, _player.transform.position + new Vector3(0f, 2f, 15f));
+        //        yield return new WaitForSeconds(1f);
+        //        DestroyObstacle(obstacle);
+        //    }
+        //}
         
-        private IEnumerator SpawnRandomObstacles()
+        private IEnumerator KickBeatRoutine(ObstacleType obstacleType)
         {
             while (true)
             {
-                ObstacleType type;
-                int rand = Random.Range(-2, 2);
-                Obstacle obstacle;
-                if (rand >= 0)
-                {
-                    type = ObstacleType.TestCube;
-                    obstacle = SpawnObstackle(type, _player.transform.position + new Vector3(-10f, 2f, 0f));
-                }
-                else
-                {
-                    type = ObstacleType.TestSphere;
-                    obstacle = SpawnObstackle(type, _player.transform.position + new Vector3(-25f, 2f, 0f), _player.transform.position);
-                }
-
-                yield return new WaitForSeconds(2f);
-                poolDict[type].Release(obstacle);
+                yield return new WaitUntil(() => AllowSpawn(AudioBandType.Bass, 0.7f, 0.1f));
+                Obstacle obstacle = SpawnObstacle(obstacleType,
+                                                  _player.transform.position + new Vector3(0f, 2f, 15f));
+                StartCoroutine(DestroyRoutine(obstacle));
             }
-        } 
+        }
+
+        private IEnumerator SnareBeatRoutine(ObstacleType obstacleType)
+        {
+            while (true)
+            {
+                yield return new WaitUntil(() => AllowSpawn(AudioBandType.UpperMidrange, 0.5f, 0.25f));
+                Obstacle obstacle = SpawnObstacle(obstacleType,
+                                                  _player.transform.position + new Vector3(0f, 2f, 15f), 50f);
+                StartCoroutine(DestroyRoutine(obstacle));
+            }
+        }
+
+        private IEnumerator HatBeatRoutine(ObstacleType obstacleType)
+        {
+            while (true)
+            {
+                yield return new WaitUntil(() => AllowSpawn(AudioBandType.HigherMidrange, 0.5f, 0.1f));
+                Obstacle obstacle = SpawnObstacle(obstacleType,
+                                                  _player.transform.position + new Vector3(0f, 2f, 15f), 50f);
+                StartCoroutine(DestroyRoutine(obstacle));
+            }
+        }
+
+        private bool AllowSpawn(AudioBandType bandType, float amp, float timeOut)
+        {
+            float val = AudioPeerSystem.AudioBandBuffer[(int)bandType];
+            if (val >= amp)
+            {
+                if (Time.time > (prevMom + timeOut))
+                {
+                    //Debug.Log(val);
+                    prevMom = Time.time;
+                    return true;
+                }
+            }
+            //Debug.Log(val);
+            return false;
+        }
+
+        private IEnumerator DestroyRoutine(Obstacle obstacle)
+        {
+            yield return new WaitForSeconds(1f);
+            DestroyObstacle(obstacle);
+        }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 619810489}
-  m_IndirectSpecularColor: {r: 0.043674428, g: 0.044857424, b: 0.059592403, a: 1}
+  m_IndirectSpecularColor: {r: 0.043582305, g: 0.04476091, b: 0.059478745, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c0926625a7792498c6e779a710973b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkSystemHandler: {fileID: 2164209549763575914, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
+  chunkSystemHandler: {fileID: 1708493585}
 --- !u!1 &434643233
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +768,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 53.66, y: 47.02, z: -3.616}
+--- !u!114 &1708493585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2164209549763575914, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
+  m_PrefabInstance: {fileID: 609903219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577f5d36d4054fd6a48ee533f8b4fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1751977543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1751977545}
+  - component: {fileID: 1751977544}
+  m_Layer: 0
+  m_Name: ObstacleSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1751977544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751977543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e73598d999a6240b35782ea88f79b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startChunkCount: 5
+  obstaclePrefabs:
+  - {fileID: 7117123638110413193, guid: e7dd665088cd4554baacaf3f46ad9101, type: 3}
+  - {fileID: 6184443101730975243, guid: 36ca4a8ca447ea84a9b6bab5785b5b65, type: 3}
+  - {fileID: 1284040816917335111, guid: 5148234c6d4ec5243aa8a35f899c214c, type: 3}
+--- !u!4 &1751977545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751977543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1754998787
 GameObject:
   m_ObjectHideFlags: 0

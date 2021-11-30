@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 7744196425341995453, guid: 63aeedc2bce5bfc4ba0973cee1a06727, type: 3}
-  moveSpeed: 15
+  moveSpeed: 25
   rotationSmoothTime: 0.12
   speedChangeRate: 10
 --- !u!1 &2967875472783095936
