@@ -8,6 +8,8 @@ namespace InputSystem
     {
         [SerializeField] private Transform cameraTarget;
 
+        public Transform noga;
+
         private ICinemachineCamera followCamera;
 
         private void Start()
