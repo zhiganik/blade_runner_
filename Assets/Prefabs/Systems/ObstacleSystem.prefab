@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startChunkCount: 3
   obstaclePrefabs:
-  - {fileID: 481897574615868176, guid: 36ca4a8ca447ea84a9b6bab5785b5b65, type: 3}
-  currentSpawnedObstacles: []
+  - {fileID: -1260248760572859099, guid: 3be7512e1c6008448a3b37f23c37d9c6, type: 3}
+  - {fileID: 6184443101730975243, guid: 36ca4a8ca447ea84a9b6bab5785b5b65, type: 3}
+  - {fileID: 7155891245858427044, guid: 4c13a831d8cacc747b3f371ef1b53de7, type: 3}

@@ -5,9 +5,12 @@ using Enums;
 using InputSystem;
 using PoolFactory;
 using UnityEngine;
+using Zenject;
 
-namespace ChunkSystem
+namespace ChunkSystem.ChunkElements
 {
+    public class DiChunkFactory : PlaceholderFactory<ChunkPlatform>{}
+    
     public class ChunkPlatform : MonoBehaviour, IPoolObject
     {
         [SerializeField] private int chunkCountInPool;
@@ -15,24 +18,23 @@ namespace ChunkSystem
         [SerializeField] private ChunkNode[] chunkNodes;
         [SerializeField] private BoxCollider groundCollider;
 
-        [SerializeField] private ChunkData _chunkData;
+        public IAudioSystemService AudioSystemHandler { get; private set; }
+        public CameraTest CameraTest { get; private set; }
         
         public event Action onPlatformReset;
 
         public int PoolID { get; set; }
         public BoxCollider CurrentGroundCollider => groundCollider;
-        public ChunkData ChunkData => _chunkData;
 
         public int GetChunkCountInPool => chunkCountInPool;
 
-        public void InitializeChunkData(AudioSystemHandler audioSystemHandler, CameraTest cameraTest)
+        [Inject]
+        private void Construct(IAudioSystemService audioSystemHandler, CameraTest cameraTest)
         {
-            var chunkData = new ChunkData();
-            chunkData.AudioSystemHandler = audioSystemHandler;
-            chunkData.CameraTest = cameraTest;
-            _chunkData = chunkData;
+            AudioSystemHandler = audioSystemHandler;
+            CameraTest = cameraTest;
         }
-        
+
         public ChunkNode GetChunkNode(ChunkType chunkType)
         {
             var targetChunk = chunkNodes
@@ -52,13 +54,5 @@ namespace ChunkSystem
         {
             gameObject.SetActive(true);
         }
-    }
-
-
-    [Serializable]
-    public class ChunkData
-    {
-        public AudioSystemHandler AudioSystemHandler;
-        public CameraTest CameraTest;
     }
 }

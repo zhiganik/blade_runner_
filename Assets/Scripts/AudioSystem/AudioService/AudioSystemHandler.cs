@@ -1,21 +1,19 @@
-﻿using UnityEngine;
+﻿using AudioSystem.AudioVisualizer;
+using UnityEngine;
 
 namespace AudioSystem.AudioService
 {
     [RequireComponent(typeof(AudioSource))]
-    public class AudioSystemHandler : MonoBehaviour
+    public class AudioSystemHandler : MonoBehaviour, IAudioSystemService
     {
-        [SerializeField] private LivingParticlesAudioSource livingParticlesAudioSource;
-        
         private AudioSource _audioSource;
-
-        public AudioSource AudioSource => _audioSource;
-        public LivingParticlesAudioSource ParticleAudioSource => livingParticlesAudioSource;
+        private AudioPeerSystem _audioPeerSystem;
+        public AudioSource GetCurrentAudioSource => _audioSource;
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
-            livingParticlesAudioSource = GetComponent<LivingParticlesAudioSource>();
+            _audioPeerSystem = GetComponent<AudioPeerSystem>();
         }
     }
 }
