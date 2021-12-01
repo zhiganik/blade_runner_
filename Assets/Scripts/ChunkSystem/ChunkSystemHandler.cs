@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AudioSystem.AudioService;
+using ChunkSystem.ChunkElements;
 using Enums;
 using InputSystem;
 using ObserverSystem;
@@ -20,10 +20,9 @@ namespace ChunkSystem
         [SerializeField] private ChunkPlatform[] chunkPrefabs;
         [SerializeField] private List<ChunkPlatform> currentSpawnedChunks;
         
+        private DiChunkFactory _diChunkFactory;
         private Pool<ChunkPlatform>[] _platformPool;
-        
         private CameraTest _player;
-        private AudioSystemHandler _audioSystemHandler;
         
         private readonly List<INotifyListener<ChunkCreationType>> _notifyListeners = 
             new List<INotifyListener<ChunkCreationType>>();
@@ -33,10 +32,10 @@ namespace ChunkSystem
         private const float PositionTolerance = 10f;
         
         [Inject]
-        private void Construct(CameraTest runnerControl, AudioSystemHandler audioSystemHandler)
+        private void Construct(CameraTest runnerControl, DiChunkFactory placeholderFactory)
         {
             _player = runnerControl;
-            _audioSystemHandler = audioSystemHandler;
+            _diChunkFactory = placeholderFactory;
         }
         
         private void Awake()
@@ -65,7 +64,7 @@ namespace ChunkSystem
                 var chunk = chunkPrefabs[index];
                 
                 _platformPool[index] = new Pool<ChunkPlatform>(new 
-                    PrefabPoolFactory<ChunkPlatform>(chunk.gameObject), chunk.GetChunkCountInPool);
+                    DiPoolFactory<ChunkPlatform>(chunk.gameObject, _diChunkFactory), chunk.GetChunkCountInPool);
             }
         }
 
@@ -126,7 +125,6 @@ namespace ChunkSystem
             targetPlatform.PoolID = poolID;
             SubscribeOnPlatformResetEvent(targetPlatform);
             currentSpawnedChunks.Add(targetPlatform);
-            targetPlatform.InitializeChunkData(_audioSystemHandler, _player);
             targetPlatform.Activate();
         }
 

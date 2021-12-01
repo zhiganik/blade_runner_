@@ -17,10 +17,8 @@ namespace MonoInstallers
         {
             var audioSystemInstance =
                 Container.InstantiatePrefabForComponent<AudioSystemHandler>(audioSystemHandler);
-
-            Container.Bind<AudioSystemHandler>().
-                FromInstance(audioSystemInstance).
-                AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<AudioSystemHandler>().FromInstance(audioSystemInstance).AsSingle();
         }
     }
 }
