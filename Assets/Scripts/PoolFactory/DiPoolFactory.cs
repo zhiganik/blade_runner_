@@ -1,20 +1,20 @@
-﻿using ChunkSystem.ChunkElements;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 namespace PoolFactory
 {
-    public class DiPoolFactory<T> : IPoolFactory<T> where T : MonoBehaviour {
-
+    public class DiPoolFactory<T> : IPoolFactory<T> where T : MonoBehaviour
+    {
         private readonly GameObject _objectPrefab;
         private readonly string _objectName;
-        private readonly DiChunkFactory _factory;
+        private readonly PlaceholderFactory<T> _factory;
         
         private int _index = 0;
         private GameObject _parent;
 
         private const string ParentName = "PoolHandler";
 
-        public DiPoolFactory(GameObject objectPrefab, DiChunkFactory factory)
+        public DiPoolFactory(GameObject objectPrefab, PlaceholderFactory<T> factory)
         {
             _objectPrefab = objectPrefab;
             _objectName = objectPrefab.name;
@@ -27,10 +27,9 @@ namespace PoolFactory
             var currentGameObject = _factory.Create();
             currentGameObject.transform.SetParent(_parent.transform);
             currentGameObject.name = _objectName + _index;
-            var objectOfType = currentGameObject.GetComponent<T>();
+            currentGameObject.gameObject.SetActive(false);
             _index++;
-            objectOfType.gameObject.SetActive(false);
-            return objectOfType;
+            return currentGameObject;
         }
 
         private void CreateDefaultParent(string objectName)
