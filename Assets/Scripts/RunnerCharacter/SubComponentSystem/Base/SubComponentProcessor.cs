@@ -6,54 +6,77 @@ namespace BladeRunner
 {
     public enum SubComponentType
     {
-        PLAYER_INPUT,
-        CHARACTER_MOVEMENT,
-        CHARACTER_JUMP,
-        CHARACTER_GROUND_CHECK,
-        CHARACTER_CRUNCH,
-        CHARACTER_ATTACK,
+        Input,
+        Movement,
+        Jump,
+        GroundCheck,
+        Crunch,
+        Attack,
 
         COUNT,
     }
     public class SubComponentProcessor : MonoBehaviour
     {
-        public SubComponent[] ArrSubComponents;
-
-        [HideInInspector] public RunnerControl control;
-
-        public MovementData movementData;
-        public GroundData groundData;
-        public JumpData jumpData;
+        [SerializeField] private List<SubComponent> arrSubComponents;
+        [SerializeField] private MovementData movementData;
+        [SerializeField] private GroundData groundData;
+        [SerializeField] private JumpData jumpData;
+        
+        private Runner runner;
+        private Dictionary<SubComponentType, SubComponent> components;
 
         private void Awake()
         {
-            ArrSubComponents = new SubComponent[(int)SubComponentType.COUNT];
-            control = GetComponentInParent<RunnerControl>();
+            runner = GetComponentInParent<Runner>();
+            SetComponents();
+        }
+
+        private void SetComponents()
+        {
+            components = new Dictionary<SubComponentType, SubComponent>();
+            
+            foreach (var subComponent in arrSubComponents)
+            {
+                components.Add(subComponent.Type, subComponent);
+            }
+            
+            SetComponent(SubComponentType.Input, runner, null);
+            SetComponent(SubComponentType.Movement, runner, movementData);
+            SetComponent(SubComponentType.GroundCheck, runner, groundData);
+            SetComponent(SubComponentType.Jump, runner, jumpData);
+            SetComponent(SubComponentType.Crunch, runner, null);
+        }
+
+        private void SetComponent(SubComponentType type, Runner runner, Data data)
+        {
+            if(components.ContainsKey(type))
+                components[type].SetComponent(runner, data);
         }
 
         public void FixedUpdateSubComponents()
         {
-            FixedUpdateSubComponent(SubComponentType.CHARACTER_MOVEMENT);
-            FixedUpdateSubComponent(SubComponentType.CHARACTER_GROUND_CHECK);
+            FixedUpdateSubComponent(SubComponentType.Input);
+            FixedUpdateSubComponent(SubComponentType.Movement);
+            // FixedUpdateSubComponent(SubComponentType.GroundCheck);
         }
         public void UpdateSubComponents()
         {
-            UpdateSubComponent(SubComponentType.CHARACTER_JUMP);
-            UpdateSubComponent(SubComponentType.CHARACTER_CRUNCH);
+            UpdateSubComponent(SubComponentType.Jump);
+            UpdateSubComponent(SubComponentType.Crunch);
         }
 
         private void FixedUpdateSubComponent(SubComponentType type)
         {
-            if (ArrSubComponents[(int)type] != null)
+            if (components.ContainsKey(type))
             {
-                ArrSubComponents[(int)type].OnFixedUpdate();
+                components[type].OnFixedUpdate();
             }
         }
         private void UpdateSubComponent(SubComponentType type)
         {
-            if (ArrSubComponents[(int)type] != null)
+            if (components.ContainsKey(type))
             {
-                ArrSubComponents[(int)type].OnUpdate();
+                components[type].OnUpdate();
             }
         }
     }

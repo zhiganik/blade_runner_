@@ -28,10 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1579757679}
-  - {fileID: 1499609681}
-  - {fileID: 918032992}
-  - {fileID: 1504254967514049475}
+  - {fileID: 3859280112953732478}
   m_Father: {fileID: 6631726405054434722}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c77a0d0f15d7e43bbfaea18bfde622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrSubComponents: []
-  control: {fileID: 0}
+  arrSubComponents:
+  - {fileID: 2067621716773097032}
   movementData:
     Speed: 0
   groundData:
@@ -67,7 +64,7 @@ MonoBehaviour:
     FallTimeout: 0
     JumpTimeoutDelta: 0
     FallTimeoutDelta: 0
---- !u!1 &918032991
+--- !u!1 &2959104935965595714
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,119 +72,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 918032992}
-  - component: {fileID: 918032993}
+  - component: {fileID: 3859280112953732478}
+  - component: {fileID: 2067621716773097032}
   m_Layer: 0
-  m_Name: RunnerJump
+  m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &918032992
+--- !u!4 &3859280112953732478
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918032991}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 363233707}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &918032993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918032991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e51e7751eabc02b4d9ced30625489616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerJump: {fileID: 5662319297011699298, guid: 63aeedc2bce5bfc4ba0973cee1a06727, type: 3}
-  terminalVelocity: 53
-  jumpHeight: 10
-  gravity: -9.8
-  jumpTimeout: 0.1
-  fallTimeout: 0.15
---- !u!1 &1499609680
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1499609681}
-  - component: {fileID: 1499609682}
-  m_Layer: 0
-  m_Name: RunnerGroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1499609681
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499609680}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 363233707}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1499609682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499609680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52630470aae9ff4eb375d6df1cbc46e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundedOffset: -0.14
-  groundedRadius: 0.28
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!1 &1579757678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1579757679}
-  - component: {fileID: 1579757680}
-  m_Layer: 0
-  m_Name: RunnerMovement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1579757679
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579757678}
+  m_GameObject: {fileID: 2959104935965595714}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -195,22 +95,19 @@ Transform:
   m_Father: {fileID: 363233707}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1579757680
+--- !u!114 &2067621716773097032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579757678}
+  m_GameObject: {fileID: 2959104935965595714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f73f654028556843a868301563a8b81, type: 3}
+  m_Script: {fileID: 11500000, guid: 31d65497b6f8fc84eaebfe017c26b38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 7744196425341995453, guid: 63aeedc2bce5bfc4ba0973cee1a06727, type: 3}
-  moveSpeed: 25
-  rotationSmoothTime: 0.12
-  speedChangeRate: 10
+  type: 0
 --- !u!1 &2967875472783095936
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,50 +138,6 @@ Transform:
   m_Father: {fileID: 6631726405054434722}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4400607209598951380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1504254967514049475}
-  - component: {fileID: 8210776129837086320}
-  m_Layer: 0
-  m_Name: RunnerCrunch
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1504254967514049475
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4400607209598951380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 363233707}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8210776129837086320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4400607209598951380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4bc339d5d74ba199fe69cc8d71eb42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crunch: {fileID: -7207817682670756412, guid: 63aeedc2bce5bfc4ba0973cee1a06727, type: 3}
 --- !u!1 &6798941558470329052
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d7b5f92d643f147a46a4aa60273fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  processor: {fileID: 363233708}
+  runnerRigidbody: {fileID: 1768035890582168392}
+  runnerAnimator: {fileID: 1871768394947577305}
 --- !u!114 &1871768394947577305
 MonoBehaviour:
   m_ObjectHideFlags: 0

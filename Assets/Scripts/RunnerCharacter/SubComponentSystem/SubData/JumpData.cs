@@ -1,6 +1,6 @@
 
 [System.Serializable]
-public class JumpData
+public class JumpData : Data
 {
     public float VerticalVelocity;
     public float TerminalVelocity;
