@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BladeRunner
 {
-    public class TestCylinder : Obstacle
+    public class TestCylinder : DynamicObstacle
     {
         private MeshCollider boxCollider;
         private void OnEnable()

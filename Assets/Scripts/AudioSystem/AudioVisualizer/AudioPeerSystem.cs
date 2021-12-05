@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace AudioSystem.AudioVisualizer
@@ -5,6 +6,14 @@ namespace AudioSystem.AudioVisualizer
     [RequireComponent(typeof(AudioSource))]
     public class AudioPeerSystem : MonoBehaviour
     {
+        public event Action<float> OnUpdateSubBassBand;
+        public event Action<float> OnUpdateBassBand;
+        public event Action<float> OnUpdateLowerMidrangeBand;
+        public event Action<float> OnUpdateMidrangeBand;
+        public event Action<float> OnUpdateHigherMidrangeBand;
+        public event Action<float> OnUpdatePresenceBand;
+        public event Action<float> OnUpdateBrillianceBand;
+
         [SerializeField] private float audioSmoothRateValue;
         [SerializeField] private FFTWindow encodingAudioAlgorithm;
         
@@ -165,5 +174,15 @@ namespace AudioSystem.AudioVisualizer
                 _frequencyBand[i] = average * 10;
             }
         }
+        private void InvokeEvents()
+        {
+            OnUpdateSubBassBand?.Invoke((int)AudioBandType.SubBass);
+            OnUpdateBassBand?.Invoke((int)AudioBandType.Bass);
+            OnUpdateLowerMidrangeBand?.Invoke((int)AudioBandType.LowerMidrange);
+            OnUpdateMidrangeBand?.Invoke((int)AudioBandType.Midrange);
+            OnUpdateHigherMidrangeBand?.Invoke((int)AudioBandType.HigherMidrange);
+            OnUpdatePresenceBand?.Invoke((int)AudioBandType.HigherMidrange);
+            OnUpdateBrillianceBand?.Invoke((int)AudioBandType.Brilliance);
+    }
     }
 }

@@ -5,18 +5,18 @@ using PoolFactory;
 
 namespace BladeRunner
 {
-    public enum ObstacleType
+    public enum DynamicObstacleType
     {
         TestSphere,
         TestCube,
         TestCylinder,
     }
-    public abstract class Obstacle : MonoBehaviour, IPoolObject
+    public abstract class DynamicObstacle : MonoBehaviour, IPoolObject
     {
-        [SerializeField] protected ObstacleType type;
+        [SerializeField] protected DynamicObstacleType type;
         [SerializeField] protected int startCountInPool;
         public int PoolID { get; set; }
-        public ObstacleType Type => type;
+        public DynamicObstacleType Type => type;
         public int StartCountInPool => startCountInPool;
         public Rigidbody RigidBody { get;  protected set; }
         public abstract void Spawn(Vector3 spawnPosition, Vector3 runnerPosition, BoxCollider platformCollider);

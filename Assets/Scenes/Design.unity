@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 619810489}
-  m_IndirectSpecularColor: {r: 0.043463748, g: 0.044993997, b: 0.059313614, a: 1}
+  m_IndirectSpecularColor: {r: 0.043582305, g: 0.04476091, b: 0.059478745, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -529,6 +529,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &331748030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 331748031}
+  - component: {fileID: 331748032}
+  m_Layer: 0
+  m_Name: ObstacleSystemInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &331748031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331748030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1828501025}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &331748032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331748030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d686df487146348aea2baed30230eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleSystem: {fileID: 1711001510}
+  obstacle: {fileID: 0}
 --- !u!4 &354796898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
@@ -835,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473514602026658461, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: m_Name
-      value: ObstacleSystem
+      value: DynamicObstacleSystem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
@@ -853,6 +898,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 577f5d36d4054fd6a48ee533f8b4fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1711001510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
+  m_PrefabInstance: {fileID: 1223306211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e73598d999a6240b35782ea88f79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1754998787
@@ -917,6 +973,7 @@ Transform:
   - {fileID: 426299376}
   - {fileID: 434643234}
   - {fileID: 46635485}
+  - {fileID: 331748031}
   m_Father: {fileID: 1754998788}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -937,6 +994,7 @@ MonoBehaviour:
   - {fileID: 426299377}
   - {fileID: 434643235}
   - {fileID: 46635486}
+  - {fileID: 331748032}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:

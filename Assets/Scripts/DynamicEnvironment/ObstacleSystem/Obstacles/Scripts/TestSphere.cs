@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BladeRunner
 {
-    public class TestSphere : Obstacle
+    public class TestSphere : DynamicObstacle
     {
         private void OnEnable()
         {
