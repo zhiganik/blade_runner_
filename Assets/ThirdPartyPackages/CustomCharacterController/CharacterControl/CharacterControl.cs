@@ -27,17 +27,9 @@ public class @CharacterControl : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jumping"",
+                    ""name"": ""Tap"",
                     ""type"": ""Button"",
-                    ""id"": ""cb2196cd-3253-4381-963c-629e191c13d7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Crunch"",
-                    ""type"": ""Button"",
-                    ""id"": ""d5927cb8-a490-43b0-b0a4-d3598259b85b"",
+                    ""id"": ""7cfa1959-ea7f-44f7-b92b-8032b67b5c21"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -73,28 +65,6 @@ public class @CharacterControl : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""448c06cf-8072-4eae-ae32-641d0ad39e3a"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jumping"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""14bf385a-f0b1-4f9d-ad48-f2297741ccce"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Crunch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""46218a8c-3480-4ff8-990f-36d393da65a2"",
                     ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
@@ -114,6 +84,17 @@ public class @CharacterControl : IInputActionCollection, IDisposable
                     ""action"": ""SwipePrimary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98da788d-bee7-4f09-8041-bfad1b6ba633"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -123,8 +104,7 @@ public class @CharacterControl : IInputActionCollection, IDisposable
         // Character
         m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
         m_Character_MouseLook = m_Character.FindAction("MouseLook", throwIfNotFound: true);
-        m_Character_Jumping = m_Character.FindAction("Jumping", throwIfNotFound: true);
-        m_Character_Crunch = m_Character.FindAction("Crunch", throwIfNotFound: true);
+        m_Character_Tap = m_Character.FindAction("Tap", throwIfNotFound: true);
         m_Character_SwipePrimary = m_Character.FindAction("SwipePrimary", throwIfNotFound: true);
         m_Character_SwipePosition = m_Character.FindAction("SwipePosition", throwIfNotFound: true);
     }
@@ -177,8 +157,7 @@ public class @CharacterControl : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Character;
     private ICharacterActions m_CharacterActionsCallbackInterface;
     private readonly InputAction m_Character_MouseLook;
-    private readonly InputAction m_Character_Jumping;
-    private readonly InputAction m_Character_Crunch;
+    private readonly InputAction m_Character_Tap;
     private readonly InputAction m_Character_SwipePrimary;
     private readonly InputAction m_Character_SwipePosition;
     public struct CharacterActions
@@ -186,8 +165,7 @@ public class @CharacterControl : IInputActionCollection, IDisposable
         private @CharacterControl m_Wrapper;
         public CharacterActions(@CharacterControl wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseLook => m_Wrapper.m_Character_MouseLook;
-        public InputAction @Jumping => m_Wrapper.m_Character_Jumping;
-        public InputAction @Crunch => m_Wrapper.m_Character_Crunch;
+        public InputAction @Tap => m_Wrapper.m_Character_Tap;
         public InputAction @SwipePrimary => m_Wrapper.m_Character_SwipePrimary;
         public InputAction @SwipePosition => m_Wrapper.m_Character_SwipePosition;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
@@ -202,12 +180,9 @@ public class @CharacterControl : IInputActionCollection, IDisposable
                 @MouseLook.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMouseLook;
                 @MouseLook.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMouseLook;
                 @MouseLook.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMouseLook;
-                @Jumping.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJumping;
-                @Jumping.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJumping;
-                @Jumping.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJumping;
-                @Crunch.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnCrunch;
-                @Crunch.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnCrunch;
-                @Crunch.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnCrunch;
+                @Tap.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnTap;
+                @Tap.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnTap;
+                @Tap.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnTap;
                 @SwipePrimary.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSwipePrimary;
                 @SwipePrimary.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSwipePrimary;
                 @SwipePrimary.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSwipePrimary;
@@ -221,12 +196,9 @@ public class @CharacterControl : IInputActionCollection, IDisposable
                 @MouseLook.started += instance.OnMouseLook;
                 @MouseLook.performed += instance.OnMouseLook;
                 @MouseLook.canceled += instance.OnMouseLook;
-                @Jumping.started += instance.OnJumping;
-                @Jumping.performed += instance.OnJumping;
-                @Jumping.canceled += instance.OnJumping;
-                @Crunch.started += instance.OnCrunch;
-                @Crunch.performed += instance.OnCrunch;
-                @Crunch.canceled += instance.OnCrunch;
+                @Tap.started += instance.OnTap;
+                @Tap.performed += instance.OnTap;
+                @Tap.canceled += instance.OnTap;
                 @SwipePrimary.started += instance.OnSwipePrimary;
                 @SwipePrimary.performed += instance.OnSwipePrimary;
                 @SwipePrimary.canceled += instance.OnSwipePrimary;
@@ -240,8 +212,7 @@ public class @CharacterControl : IInputActionCollection, IDisposable
     public interface ICharacterActions
     {
         void OnMouseLook(InputAction.CallbackContext context);
-        void OnJumping(InputAction.CallbackContext context);
-        void OnCrunch(InputAction.CallbackContext context);
+        void OnTap(InputAction.CallbackContext context);
         void OnSwipePrimary(InputAction.CallbackContext context);
         void OnSwipePosition(InputAction.CallbackContext context);
     }

@@ -14,17 +14,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jumping",
+                    "name": "Tap",
                     "type": "Button",
-                    "id": "cb2196cd-3253-4381-963c-629e191c13d7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Crunch",
-                    "type": "Button",
-                    "id": "d5927cb8-a490-43b0-b0a4-d3598259b85b",
+                    "id": "7cfa1959-ea7f-44f7-b92b-8032b67b5c21",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -60,28 +52,6 @@
                 },
                 {
                     "name": "",
-                    "id": "448c06cf-8072-4eae-ae32-641d0ad39e3a",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jumping",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "14bf385a-f0b1-4f9d-ad48-f2297741ccce",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Crunch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "46218a8c-3480-4ff8-990f-36d393da65a2",
                     "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
@@ -99,6 +69,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwipePrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98da788d-bee7-4f09-8041-bfad1b6ba633",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

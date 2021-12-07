@@ -36,7 +36,7 @@ namespace BladeRunner
             
         }
 
-        public void SetComponent(Runner runner, Data data)
+        public virtual void SetComponent(Runner runner, Data data)
         {
             this.runner = runner;
             this.data = data;

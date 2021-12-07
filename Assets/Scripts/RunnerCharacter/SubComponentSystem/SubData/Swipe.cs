@@ -7,7 +7,7 @@ namespace BladeRunner
         public Vector2 StartPosition;
         public Vector2 EndPosition;
 
-        public SwipeDirection SwipeDirection { get; private set; }
+        public float Distance => Vector2.Distance(StartPosition, EndPosition);
     }
 
     public enum SwipeDirection

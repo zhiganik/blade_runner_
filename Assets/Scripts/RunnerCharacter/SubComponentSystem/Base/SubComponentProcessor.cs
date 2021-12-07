@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,9 @@ namespace BladeRunner
     public enum SubComponentType
     {
         Input,
-        Movement,
+        Strafe,
         Jump,
-        GroundCheck,
+        Movement,
         Crunch,
         Attack,
 
@@ -17,12 +18,10 @@ namespace BladeRunner
     }
     public class SubComponentProcessor : MonoBehaviour
     {
-        [SerializeField] private List<SubComponent> arrSubComponents;
         [SerializeField] private MovementData movementData;
-        [SerializeField] private GroundData groundData;
-        [SerializeField] private JumpData jumpData;
         
         private Runner runner;
+        [SerializeField] private SubComponent[] subComponents;
         private Dictionary<SubComponentType, SubComponent> components;
 
         private void Awake()
@@ -30,21 +29,22 @@ namespace BladeRunner
             runner = GetComponentInParent<Runner>();
             SetComponents();
         }
-
+        
         private void SetComponents()
         {
             components = new Dictionary<SubComponentType, SubComponent>();
+            subComponents = GetComponentsInChildren<SubComponent>();
             
-            foreach (var subComponent in arrSubComponents)
+            foreach (var subComponent in subComponents)
             {
                 components.Add(subComponent.Type, subComponent);
             }
             
             SetComponent(SubComponentType.Input, runner, null);
+            SetComponent(SubComponentType.Strafe, runner, movementData);
+            SetComponent(SubComponentType.Jump, runner, movementData);
             SetComponent(SubComponentType.Movement, runner, movementData);
-            SetComponent(SubComponentType.GroundCheck, runner, groundData);
-            SetComponent(SubComponentType.Jump, runner, jumpData);
-            SetComponent(SubComponentType.Crunch, runner, null);
+            SetComponent(SubComponentType.Attack, runner, null);
         }
 
         private void SetComponent(SubComponentType type, Runner runner, Data data)
@@ -56,13 +56,13 @@ namespace BladeRunner
         public void FixedUpdateSubComponents()
         {
             FixedUpdateSubComponent(SubComponentType.Input);
+            FixedUpdateSubComponent(SubComponentType.Strafe);
+            FixedUpdateSubComponent(SubComponentType.Jump);
             FixedUpdateSubComponent(SubComponentType.Movement);
-            // FixedUpdateSubComponent(SubComponentType.GroundCheck);
+            FixedUpdateSubComponent(SubComponentType.Attack);
         }
         public void UpdateSubComponents()
         {
-            UpdateSubComponent(SubComponentType.Jump);
-            UpdateSubComponent(SubComponentType.Crunch);
         }
 
         private void FixedUpdateSubComponent(SubComponentType type)
