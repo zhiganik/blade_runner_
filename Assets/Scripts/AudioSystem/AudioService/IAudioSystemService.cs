@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AudioSystem.AudioVisualizer;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AudioSystem.AudioService
@@ -9,6 +10,5 @@ namespace AudioSystem.AudioService
         public List<IAudioReceiver> AudioReceivers { get; }
         public void AddAudioReceiver(IAudioReceiver receiver);
         public void RemoveAudioReceiver(IAudioReceiver receiver);
-        public void NotifyAudioReceivers(List<IAudioReceiver> receivers);
     }
 }

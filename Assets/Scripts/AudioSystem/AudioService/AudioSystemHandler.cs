@@ -1,4 +1,5 @@
 ﻿using AudioSystem.AudioVisualizer;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace AudioSystem.AudioService
         private AudioSource _audioSource;
         private AudioPeerSystem _audioPeerSystem;
         public AudioSource GetCurrentAudioSource => _audioSource;
-        public List<IAudioReceiver> AudioReceivers { get; }
+        public List<IAudioReceiver> AudioReceivers { get; } = new List<IAudioReceiver>();
 
         private void Awake()
         {
@@ -18,22 +19,16 @@ namespace AudioSystem.AudioService
             _audioPeerSystem = GetComponent<AudioPeerSystem>();
         }
 
-        public void NotifyAudioReceivers(List<IAudioReceiver> receivers)
-        {
-            for (int i = 0; i < receivers.Count; i++)
-            {
-                receivers[i].ReceiveAudioData();
-            }
-        }
-
         public void AddAudioReceiver(IAudioReceiver receiver)
         {
             AudioReceivers.Add(receiver);
+            _audioPeerSystem.OnUpdateBuffer += receiver.ReceiveAudioData;
         }
 
         public void RemoveAudioReceiver(IAudioReceiver receiver)
         {
             AudioReceivers.Remove(receiver);
+            _audioPeerSystem.OnUpdateBuffer -= receiver.ReceiveAudioData;
         }
     }
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAudioReceiver
 {
-    void ReceiveAudioData();
+    void ReceiveAudioData(float[] channel);
 }

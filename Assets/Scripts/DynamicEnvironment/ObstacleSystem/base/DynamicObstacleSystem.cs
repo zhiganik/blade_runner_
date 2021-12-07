@@ -20,6 +20,7 @@ namespace BladeRunner
         private Dictionary<DynamicObstacleType, Pool<DynamicObstacle>> poolDict = new Dictionary<DynamicObstacleType, Pool<DynamicObstacle>>();
         private CameraTest _player;
         private IChunkSystemService _chunkSystemHandler;
+        private IAudioSystemService _audioSystemService;
 
         float prevMom;
 
@@ -28,6 +29,7 @@ namespace BladeRunner
         {
             _player = runnerControl;
             _chunkSystemHandler = chunkSystemHandler;
+            _audioSystemService = audioSystemService;
         }
 
         private void Awake()
@@ -37,6 +39,8 @@ namespace BladeRunner
 
         private void Start()
         {
+            _audioSystemService.AddAudioReceiver(this);
+
             prevMom = Time.time;
             StartCoroutine(KickBeatRoutine(DynamicObstacleType.TestCube));
             StartCoroutine(SnareBeatRoutine(DynamicObstacleType.TestSphere));
@@ -127,7 +131,7 @@ namespace BladeRunner
             DestroyObstacle(obstacle);
         }
 
-        public void ReceiveAudioData()
+        public void ReceiveAudioData(float[] channels)
         {
             
         }
