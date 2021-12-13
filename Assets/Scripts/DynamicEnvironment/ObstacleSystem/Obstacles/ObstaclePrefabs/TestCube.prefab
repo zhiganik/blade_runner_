@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   startCountInPool: 5
+  rythmSpawnSettings: {fileID: 11400000, guid: a88e07ff56ea8434eb0e393bd0a04700, type: 2}
 --- !u!114 &3989255176930041964
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,9 +12,6 @@ namespace BladeRunner
 {
     public class DynamicObstacleSystem : MonoBehaviour, IDynamicObstacleSystemService, IAudioReceiver
     {
-        [Header("Chunk Tools")]
-        [SerializeField] private int startChunkCount;
-        [Space(5)]
         [SerializeField] private DynamicObstacle[] obstaclePrefabs;
 
         private Dictionary<DynamicObstacleType, Pool<DynamicObstacle>> poolDict = new Dictionary<DynamicObstacleType, Pool<DynamicObstacle>>();
@@ -42,9 +39,9 @@ namespace BladeRunner
             _audioSystemService.AddAudioReceiver(this);
 
             prevMom = Time.time;
-            StartCoroutine(KickBeatRoutine(DynamicObstacleType.TestCube));
-            StartCoroutine(SnareBeatRoutine(DynamicObstacleType.TestSphere));
-            StartCoroutine(HatBeatRoutine(DynamicObstacleType.TestCylinder));
+            //StartCoroutine(KickBeatRoutine(DynamicObstacleType.TestCube));
+            //StartCoroutine(SnareBeatRoutine(DynamicObstacleType.TestSphere));
+            //StartCoroutine(HatBeatRoutine(DynamicObstacleType.TestCylinder));
         }
 
         private void InitializePool()
@@ -116,7 +113,6 @@ namespace BladeRunner
             {
                 if (Time.time > (prevMom + timeOut))
                 {
-                    //Debug.Log(val);
                     prevMom = Time.time;
                     return true;
                 }
@@ -133,7 +129,15 @@ namespace BladeRunner
 
         public void ReceiveAudioData(float[] channels)
         {
-            
+            for (int i = 0; i < obstaclePrefabs.Length; i++)
+            {
+                if (obstaclePrefabs[i].rythmSpawnSettings.AllowSpawn(channels))
+                {
+                    DynamicObstacle obstacle = SpawnObstacle(obstaclePrefabs[i].Type,
+                                  _player.transform.position + new Vector3(0f, 2f, 15f));
+                    StartCoroutine(DestroyRoutine(obstacle));
+                }
+            }
         }
     }
 }

@@ -15,9 +15,10 @@ namespace BladeRunner
     {
         [SerializeField] protected DynamicObstacleType type;
         [SerializeField] protected int startCountInPool;
+        public RythmSpawnSettings rythmSpawnSettings;
         public int PoolID { get; set; }
-        public DynamicObstacleType Type => type;
         public int StartCountInPool => startCountInPool;
+        public DynamicObstacleType Type => type;
         public Rigidbody RigidBody { get;  protected set; }
         public abstract void Spawn(Vector3 spawnPosition, Vector3 runnerPosition, BoxCollider platformCollider);
         public void Reset()
