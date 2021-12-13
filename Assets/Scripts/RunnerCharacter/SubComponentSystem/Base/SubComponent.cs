@@ -6,14 +6,42 @@ namespace BladeRunner
 {
     public abstract class SubComponent : MonoBehaviour
     {
-        public RunnerControl RunnerControl => subComponentProcessor.control;
+        [SerializeField] protected SubComponentType type;
 
-        protected SubComponentProcessor subComponentProcessor;
+        protected Runner runner;
+        protected Data data;
+        protected SubComponentProcessor processor;
+
+        public Runner Runner
+        {
+            get => runner;
+            
+            set
+            {
+                if (value != null)
+                    runner = value;
+            }
+        }
+        
+        public SubComponentType Type => type;
 
         private void Awake()
         {
-            subComponentProcessor = gameObject.GetComponentInParent<SubComponentProcessor>();
+            processor = GetComponentInParent<SubComponentProcessor>();
+            AwakeComponent();
         }
+
+        protected virtual void AwakeComponent()
+        {
+            
+        }
+
+        public virtual void SetComponent(Runner runner, Data data)
+        {
+            this.runner = runner;
+            this.data = data;
+        }
+        
         public abstract void OnUpdate();
         public abstract void OnFixedUpdate();
     }

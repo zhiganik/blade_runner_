@@ -14,26 +14,26 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Movement",
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "7cfa1959-ea7f-44f7-b92b-8032b67b5c21",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SwipePrimary",
                     "type": "PassThrough",
-                    "id": "8f368521-009f-4fc6-8f26-d2e98faf881e",
+                    "id": "300f7efb-ab70-428f-829a-37f507cd9b16",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "SwipePosition",
+                    "type": "PassThrough",
+                    "id": "2b05dfad-769d-44ce-99f7-42106673cd85",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Jumping",
-                    "type": "Button",
-                    "id": "cb2196cd-3253-4381-963c-629e191c13d7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Crunch",
-                    "type": "Button",
-                    "id": "d5927cb8-a490-43b0-b0a4-d3598259b85b",
-                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -51,79 +51,35 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WASD",
-                    "id": "dc67e94c-4137-4cff-8a12-1e9cdba542dc",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "401c3acf-f2ab-46c8-a0c9-5ffc69a1b165",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "e09636b1-fbbf-475b-9e27-a8354466bb53",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "4415b166-4e90-471d-aa45-0f97467c2249",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "6b764680-2f9d-4828-b7d2-bbba7a7d8c76",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
-                    "id": "448c06cf-8072-4eae-ae32-641d0ad39e3a",
-                    "path": "<Keyboard>/space",
+                    "id": "46218a8c-3480-4ff8-990f-36d393da65a2",
+                    "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jumping",
+                    "action": "SwipePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "14bf385a-f0b1-4f9d-ad48-f2297741ccce",
-                    "path": "<Keyboard>/leftCtrl",
+                    "id": "4b22708f-0c0f-4bd6-81d8-628dd573b04d",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Crunch",
+                    "action": "SwipePrimary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98da788d-bee7-4f09-8041-bfad1b6ba633",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
