@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace BladeRunner
 {
-    public class TestCube : DynamicObstacle
+    public class TestCylinder : DynamicObstacle
     {
-        private BoxCollider boxCollider;
+        private MeshCollider boxCollider;
         private void OnEnable()
         {
             RigidBody = GetComponent<Rigidbody>();
-            boxCollider = GetComponent<BoxCollider>();
+            boxCollider = GetComponent<MeshCollider>();
         }
 
         public override void Spawn(Vector3 spawnPosition, Vector3 runnerPosition, BoxCollider platformCollider)
         {
             gameObject.SetActive(true);
-            //gameObject.transform.position = PositionSetter.ClampSpawnPosition(spawnPosition, boxCollider, platformCollider);
             gameObject.transform.position = spawnPosition;
             RigidBody.useGravity = true;
+            RigidBody.velocity = Vector3.back * 50f;
         }
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2327319522450381871}
   - component: {fileID: 3085192448745982758}
   m_Layer: 0
-  m_Name: Geo_Cube (6) 1
+  m_Name: Geo_Cube_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spectrumStreamType: 2
-  audioBandType: 1
+  audioBandType: 0
   useRandomAudioBand: 0
-  scaleVector: 1
+  scaleVector: 3
   useRandomScale: 0
-  scaleMultiplier: 3
+  scaleMultiplier: 100
 --- !u!114 &-1260248760572859099
 MonoBehaviour:
   m_ObjectHideFlags: 0

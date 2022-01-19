@@ -880,20 +880,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: obstaclePrefabs.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: obstaclePrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 7117123638110413193, guid: e7dd665088cd4554baacaf3f46ad9101, type: 3}
-    - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
-      propertyPath: obstaclePrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 6184443101730975243, guid: 36ca4a8ca447ea84a9b6bab5785b5b65, type: 3}
-    - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
-      propertyPath: obstaclePrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1284040816917335111, guid: 5148234c6d4ec5243aa8a35f899c214c, type: 3}
+      objectReference: {fileID: -1260248760572859099, guid: 4b0fabd030944ef41a5cffb68f749dc4, type: 3}
     - target: {fileID: 3473514602026658461, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: m_Name
       value: DynamicObstacleSystem

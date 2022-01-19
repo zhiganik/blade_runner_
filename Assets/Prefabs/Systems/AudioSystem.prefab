@@ -153,5 +153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e49373a9444694491d681fe8f1acae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   audioSmoothRateValue: 5
   encodingAudioAlgorithm: 4

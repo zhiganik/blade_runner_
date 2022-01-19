@@ -17,6 +17,7 @@ namespace BladeRunner
             gameObject.SetActive(true);
             transform.position = spawnPosition;
             RigidBody.useGravity = true;
+            RigidBody.velocity = Vector3.back * 50f;
         }
     }
 }

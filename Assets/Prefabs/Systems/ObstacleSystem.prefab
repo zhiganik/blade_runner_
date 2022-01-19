@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e73598d999a6240b35782ea88f79b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startChunkCount: 3
   obstaclePrefabs:
-  - {fileID: -1260248760572859099, guid: 3be7512e1c6008448a3b37f23c37d9c6, type: 3}
+  - {fileID: 7117123638110413193, guid: e7dd665088cd4554baacaf3f46ad9101, type: 3}
   - {fileID: 6184443101730975243, guid: 36ca4a8ca447ea84a9b6bab5785b5b65, type: 3}
-  - {fileID: 7155891245858427044, guid: 4c13a831d8cacc747b3f371ef1b53de7, type: 3}
+  - {fileID: 1284040816917335111, guid: 5148234c6d4ec5243aa8a35f899c214c, type: 3}

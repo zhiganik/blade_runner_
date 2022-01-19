@@ -14,9 +14,6 @@ namespace BladeRunner
         [Range(0f, 1f)]
         [SerializeField] private float preventDelay;
 
-        //[SerializeField] private Vector3 spawnPosition;
-        //[SerializeField] private float startForce;
-
         private DelayTimer delayTimer;
         private void OnEnable()
         {
