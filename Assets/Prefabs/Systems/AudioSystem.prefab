@@ -43,7 +43,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ff5b7960821bcad428c7158bd86f35a7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3015fc8ef75e5024abcbce1ec7a7be0e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -153,11 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e49373a9444694491d681fe8f1acae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   audioSmoothRateValue: 5
   encodingAudioAlgorithm: 4

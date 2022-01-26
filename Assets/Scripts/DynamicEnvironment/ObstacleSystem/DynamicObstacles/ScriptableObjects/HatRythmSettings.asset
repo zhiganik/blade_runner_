@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: HatRythmSettings
   m_EditorClassIdentifier: 
   audioBandType: 5
-  targetAmplitude: 0.7
-  preventDelay: 0.3
+  targetAmplitude: 0.85
+  preventDelay: 0.4

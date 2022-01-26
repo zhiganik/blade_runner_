@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioBandType: 0
   targetAmplitude: 0.85
-  preventDelay: 0.2
+  preventDelay: 0.4

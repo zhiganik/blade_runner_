@@ -247,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103427065}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -492,7 +492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306360332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 292783154}
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkSystemHandler: {fileID: 1708493585}
-  chunkPlatform: {fileID: 6915590673818945461, guid: 852692232b11c6e4dacb7e946de9ac68, type: 3}
+  chunkPlatform: {fileID: 6020453360660474225, guid: d6c19b56826933342a32833a3aa95376, type: 3}
 --- !u!1 &434643233
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,15 +682,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -120.35191
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.482086
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -286.27142
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalRotation.w
@@ -698,15 +698,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2164209549763575913, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -724,6 +724,10 @@ PrefabInstance:
       propertyPath: chunkPrefabs.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2164209549763575914, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
+      propertyPath: chunkPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6020453360660474225, guid: d6c19b56826933342a32833a3aa95376, type: 3}
     - target: {fileID: 2164209549763575914, guid: 7ceab86a84aee5c479e965b32331b606, type: 3}
       propertyPath: chunkPrefabs.Array.data[1]
       value: 
@@ -880,12 +884,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: obstaclePrefabs.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: obstaclePrefabs.Array.data[0]
       value: 
       objectReference: {fileID: -1260248760572859099, guid: 4b0fabd030944ef41a5cffb68f749dc4, type: 3}
+    - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6963476749223168464, guid: 7ac03facc8b46f54e897457e5676d80e, type: 3}
+    - target: {fileID: 3473514602026658460, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
+      propertyPath: obstaclePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4366441366785780925, guid: 294123094a2741b439d2013aa57e2c81, type: 3}
     - target: {fileID: 3473514602026658461, guid: 9e3b45be08e15fc49b14e8c913b0d525, type: 3}
       propertyPath: m_Name
       value: DynamicObstacleSystem
@@ -1044,7 +1056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139856911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.35191, y: 36.482086, z: 286.27142}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 354796898}

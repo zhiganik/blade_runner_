@@ -67,7 +67,8 @@ namespace BladeRunner
                 if (obstaclePrefabs[i].rythmSpawnSettings.AllowSpawn(channels))
                 {
                     DynamicObstacle obstacle = SpawnObstacle(obstaclePrefabs[i].Type,
-                                  _player.transform.position + new Vector3(0f, 2f, 15f));
+                                  _player.transform.position + new Vector3(0f, 2f, 25f));
+
                     StartCoroutine(DestroyRoutine(obstacle));
                 }
             }
