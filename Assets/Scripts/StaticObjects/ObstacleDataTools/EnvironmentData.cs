@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace StaticObstacles.ObstacleDataTools
+namespace StaticObjects.ObstacleDataTools
 {
     [CreateAssetMenu(fileName = "EnvironmentData", menuName = "DataPresets/EnvironmentData", order = 0)]
     public class EnvironmentData : BaseData

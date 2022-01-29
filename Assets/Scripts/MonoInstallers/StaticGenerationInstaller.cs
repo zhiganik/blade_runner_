@@ -1,4 +1,4 @@
-﻿using StaticObstacles;
+﻿using StaticObjects;
 using UnityEngine;
 using Zenject;
 

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace StaticObstacles.ObstacleDataTools
+namespace StaticObjects.ObstacleDataTools
 {
     public abstract class BaseData : ScriptableObject
     {
@@ -17,6 +17,11 @@ namespace StaticObstacles.ObstacleDataTools
         public virtual RoadElement GetObject(int index)
         {
             return listOfData[index];
+        }
+        
+        public List<RoadElement> GetAllObjects()
+        {
+            return listOfData;
         }
 
         public int GetLenghtOfList()

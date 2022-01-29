@@ -1,9 +1,9 @@
 ﻿using ChunkSystem.ChunkElements;
 
-namespace StaticObstacles
+namespace StaticObjects
 {
     public interface IStaticGenerationService
     {
-        public void ProceedChunk(ChunkPlatform platform);
+        public void ProceedChunkGeneration(ChunkPlatform platform);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ChunkSystem;
 using InputSystem;
-using StaticObstacles;
+using StaticObjects;
 using UnityEngine;
 using Zenject;
 
@@ -56,7 +56,8 @@ namespace BaseCore
         private void GenerateChunk()
         {
             var newChunk = _chunkService.CreateChunk();
-            _generationService.ProceedChunk(newChunk);
+            _generationService.ProceedChunkGeneration(newChunk);
+            newChunk.Activate();
         }
     }
 }

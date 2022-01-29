@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Enums;
 using PoolFactory;
-using StaticObstacles.ObstacleDataTools;
 using UnityEngine;
 using Zenject;
 
@@ -14,13 +12,12 @@ namespace ChunkSystem.ChunkElements
     public class ChunkPlatform : MonoBehaviour, IPoolObject
     {
         [SerializeField] private int chunkCountInPool;
-        [SerializeField] private PlatformType platformType;
         [SerializeField] private ChunkNode[] chunkNodes;
         [SerializeField] private BoxCollider groundCollider;
 
-        private event Action OnPlatformReset;
+        private event Action<ChunkPlatform> OnPlatformReset;
         
-        public event Action PlatformReset
+        public event Action<ChunkPlatform> PlatformReset
         {
             add => OnPlatformReset += value;
             remove => OnPlatformReset -= value;
@@ -43,7 +40,7 @@ namespace ChunkSystem.ChunkElements
         public void OnReset()
         {
             gameObject.SetActive(false);
-            OnPlatformReset?.Invoke();
+            OnPlatformReset?.Invoke(this);
         }
 
         public void Activate()

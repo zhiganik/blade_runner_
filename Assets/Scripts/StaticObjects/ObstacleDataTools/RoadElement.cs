@@ -1,12 +1,17 @@
-﻿using PoolFactory;
+﻿using Enums.StaticObjects;
+using PoolFactory;
 using UnityEngine;
 
-namespace StaticObstacles.ObstacleDataTools
+namespace StaticObjects.ObstacleDataTools
 {
     public class RoadElement : MonoBehaviour, IPoolObject
     {
-        public int PoolID { get; set; }
+        [SerializeField] private StaticObjectType objectType;
         
+        public int PoolID { get; set; }
+
+        public StaticObjectType ObjectType => objectType;
+
         public void OnReset()
         {
             gameObject.SetActive(false);
