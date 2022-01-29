@@ -45,7 +45,7 @@ namespace PoolFactory
         //Return to pool
         public void Release(T poolObject)
         {
-            poolObject.Reset();
+            poolObject.OnReset();
             _unavailableObjects.Remove(poolObject);
         }
     }

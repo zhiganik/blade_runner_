@@ -12,7 +12,7 @@ namespace MonoInstallers
         
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<ChunkSystemHandler>().FromInstance(chunkSystemHandler).AsSingle();
+            Container.BindInterfacesTo<ChunkSystemHandler>().FromInstance(chunkSystemHandler).AsSingle();
             Container.BindFactory<ChunkPlatform, DiChunkFactory>().FromComponentInNewPrefab(chunkPlatform).AsSingle();
         }
     }

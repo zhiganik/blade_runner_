@@ -21,7 +21,7 @@ namespace BladeRunner
         public DynamicObstacleType Type => type;
         public Rigidbody RigidBody { get;  protected set; }
         public abstract void Spawn(Vector3 spawnPosition, Vector3 runnerPosition, BoxCollider platformCollider);
-        public void Reset()
+        public void OnReset()
         {
             gameObject.SetActive(false);
 

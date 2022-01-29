@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using AudioSystem.AudioService;
 using Enums;
-using InputSystem;
 using PoolFactory;
+using StaticObstacles.ObstacleDataTools;
 using UnityEngine;
 using Zenject;
 
@@ -18,22 +18,18 @@ namespace ChunkSystem.ChunkElements
         [SerializeField] private ChunkNode[] chunkNodes;
         [SerializeField] private BoxCollider groundCollider;
 
-        public IAudioSystemService AudioSystemHandler { get; private set; }
-        public CameraTest CameraTest { get; private set; }
+        private event Action OnPlatformReset;
         
-        public event Action onPlatformReset;
-
+        public event Action PlatformReset
+        {
+            add => OnPlatformReset += value;
+            remove => OnPlatformReset -= value;
+        }
+        
         public int PoolID { get; set; }
         public BoxCollider CurrentGroundCollider => groundCollider;
 
         public int GetChunkCountInPool => chunkCountInPool;
-
-        [Inject]
-        private void Construct(IAudioSystemService audioSystemHandler, CameraTest cameraTest)
-        {
-            AudioSystemHandler = audioSystemHandler;
-            CameraTest = cameraTest;
-        }
 
         public ChunkNode GetChunkNode(ChunkType chunkType)
         {
@@ -44,10 +40,10 @@ namespace ChunkSystem.ChunkElements
             return targetChunk;
         }
         
-        public void Reset()
+        public void OnReset()
         {
             gameObject.SetActive(false);
-            onPlatformReset?.Invoke();
+            OnPlatformReset?.Invoke();
         }
 
         public void Activate()

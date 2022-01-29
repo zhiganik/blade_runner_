@@ -6,21 +6,18 @@ namespace PoolFactory
 
         private readonly GameObject _objectPrefab;
         private readonly string _objectName;
-        
+
+        private GameObject poolParent;
         private int _index = 0;
         private GameObject _parent;
 
         private const string ParentName = "PoolHandler";
-
-        public PrefabPoolFactory(GameObject objectPrefab) : this(objectPrefab, objectPrefab.name)
-        {
-            CreateDefaultParent(objectPrefab.name);
-        }
-
-        public PrefabPoolFactory(GameObject objectPrefab, string name)
+        
+        public PrefabPoolFactory(GameObject objectPrefab, GameObject parent)
         {
             _objectPrefab = objectPrefab;
-            _objectName = name;
+            poolParent = parent;
+            CreateDefaultParent(objectPrefab.name);
         }
 
         public T Create()
@@ -36,6 +33,7 @@ namespace PoolFactory
         private void CreateDefaultParent(string objectName)
         {
             _parent = new GameObject(objectName + ParentName);
+            _parent.transform.parent = poolParent.transform;
         }
     }
 }

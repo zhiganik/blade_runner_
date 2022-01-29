@@ -18,6 +18,8 @@ namespace BladeRunner
         private CameraTest _player;
         private IChunkSystemService _chunkSystemHandler;
         private IAudioSystemService _audioSystemService;
+        
+        private const string BaseScopeForPool = "DynamicObstackePools";
 
         [Inject]
         private void Construct(CameraTest runnerControl, IChunkSystemService chunkSystemHandler, IAudioSystemService audioSystemService)
@@ -39,11 +41,13 @@ namespace BladeRunner
 
         private void InitializePool()
         {
+            var poolParent = new GameObject(BaseScopeForPool);
+            
             for (var index = 0; index < obstaclePrefabs.Length; index++)
             {
                 var chunk = obstaclePrefabs[index];
                 poolDict[chunk.Type] =
-                    new Pool<DynamicObstacle>(new PrefabPoolFactory<DynamicObstacle>(chunk.gameObject), chunk.StartCountInPool);
+                    new Pool<DynamicObstacle>(new PrefabPoolFactory<DynamicObstacle>(chunk.gameObject, poolParent), chunk.StartCountInPool);
             }
         }
 
@@ -56,7 +60,7 @@ namespace BladeRunner
 
         public void DestroyObstacle(DynamicObstacle obstacle)
         {
-            obstacle.Reset();
+            obstacle.OnReset();
             poolDict[obstacle.Type].Release(obstacle);
         }
 

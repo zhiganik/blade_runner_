@@ -4,7 +4,7 @@
     {
         public int PoolID { get; set; }
 
-        public void Reset();
+        public void OnReset();
     }
     
 }
