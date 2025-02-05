@@ -36,9 +36,9 @@ namespace BladeRunner
 
         private void JumpVelocity()
         {
-            var jumpVelocity = runner.RunnerRigidbody.velocity;
+            var jumpVelocity = runner.RunnerRigidbody.linearVelocity;
             jumpVelocity.y = movementData.JumpData.VerticalVelocity;
-            runner.RunnerRigidbody.velocity = jumpVelocity;
+            runner.RunnerRigidbody.linearVelocity = jumpVelocity;
         }
 
         private void Move()

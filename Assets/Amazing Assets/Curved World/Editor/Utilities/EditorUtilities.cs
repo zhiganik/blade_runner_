@@ -1246,11 +1246,11 @@ namespace AmazingAssets
 
             static public RENDER_PIPELINE GetCurrentRenderPipeline()
             {
-                if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset == null)
+                if (UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline == null)
                     return RENDER_PIPELINE.Builtin;
                 else
                 {
-                    if (UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset.name.Contains("Universal"))
+                    if (UnityEngine.Rendering.GraphicsSettings.defaultRenderPipeline.name.Contains("Universal"))
                         return RENDER_PIPELINE.Universal;
                     else
                         return RENDER_PIPELINE.HighDefinition;

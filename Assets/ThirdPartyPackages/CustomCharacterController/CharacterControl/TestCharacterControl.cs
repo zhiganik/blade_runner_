@@ -132,7 +132,7 @@ namespace CharacterDevelopment
             if (MOVEMENT == Vector2.zero) targetSpeed = 0.0f;
 
             //a reference to the players current horizontal velocity
-            float currentHorizontalSpeed = new Vector3(RIGID_BODY.velocity.x, 0.0f, RIGID_BODY.velocity.z).magnitude;
+            float currentHorizontalSpeed = new Vector3(RIGID_BODY.linearVelocity.x, 0.0f, RIGID_BODY.linearVelocity.z).magnitude;
 
             float speedOffset = 0.1f;
             float inputMagnitude = MOVEMENT.magnitude;
@@ -167,7 +167,7 @@ namespace CharacterDevelopment
             }
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
             // move the player
-            RIGID_BODY.velocity = (targetDirection.normalized * (_speed) + new Vector3(0.0f, _verticalVelocity, 0.0f));
+            RIGID_BODY.linearVelocity = (targetDirection.normalized * (_speed) + new Vector3(0.0f, _verticalVelocity, 0.0f));
 
         }
         public void PlayerJumping()

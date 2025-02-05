@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using Cinemachine;
 using ChunkSystem;
+using Unity.Cinemachine;
 
 namespace InputSystem
 {
@@ -10,13 +10,23 @@ namespace InputSystem
 
         public Transform noga;
 
-        private ICinemachineCamera followCamera;
+        private CinemachineCamera followCamera;
 
         private void Start()
         {
-            followCamera = CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+            followCamera = GetFirstActiveCinemachineCamera();
             followCamera.Follow = cameraTarget;
             followCamera.LookAt = cameraTarget;
+        }
+        
+        CinemachineCamera GetFirstActiveCinemachineCamera()
+        {
+            CinemachineBrain brain = Camera.main?.GetComponent<CinemachineBrain>();
+            if (brain != null && brain.ActiveVirtualCamera != null)
+            {
+                return brain.ActiveVirtualCamera as CinemachineCamera;
+            }
+            return null;
         }
     }
 }
