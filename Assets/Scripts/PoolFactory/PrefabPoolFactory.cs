@@ -27,6 +27,7 @@ namespace PoolFactory
         {
             var currentGameObject = Object.Instantiate(_objectPrefab, _parent.transform);
             currentGameObject.name = _objectName + _index;
+            
             var objectOfType = currentGameObject.GetComponent<T>();
             _index++;
             objectOfType.gameObject.SetActive(false);

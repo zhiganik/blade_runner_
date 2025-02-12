@@ -1,5 +1,4 @@
 using AudioSystem.AudioService;
-using AudioSystem.AudioVisualizer;
 using ChunkSystem;
 using InputSystem;
 using PoolFactory;

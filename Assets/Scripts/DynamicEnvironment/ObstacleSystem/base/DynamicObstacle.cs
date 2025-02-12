@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using PoolFactory;
 
@@ -25,7 +23,7 @@ namespace BladeRunner
         {
             gameObject.SetActive(false);
 
-            if (RigidBody != null) RigidBody.useGravity = false;
+            if (RigidBody is not null) RigidBody.useGravity = false;
 
             gameObject.transform.position = Vector3.zero;
         }

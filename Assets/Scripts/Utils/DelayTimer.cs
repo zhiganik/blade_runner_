@@ -6,18 +6,22 @@ namespace BladeRunner
 {
     public class DelayTimer
     {
-        protected float FixedMoment;
-        public DelayTimer()
+        private float _fixedMoment;
+        private readonly float _delay;
+        public DelayTimer(float delay)
         {
-            FixedMoment = Time.time;
+            _delay = delay;
+            _fixedMoment = Time.time;
         }
-        public bool CheckTimeOut(float delay)
+        public bool IsTimeOut()
         {
-            if (Time.time >= (FixedMoment + delay))
+            if (Time.time >= (_fixedMoment + _delay))
             {
-                FixedMoment = Time.time;
+                _fixedMoment = Time.time;
                 return true;
             }
+            
+            _fixedMoment = Time.time;
             return false;
         }
     }

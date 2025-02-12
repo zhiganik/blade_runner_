@@ -64,7 +64,7 @@ namespace AudioSystem.AudioVisualizer
             CreateAudioBands();
             GetAmplitudeOfAllBands();
 
-            OnUpdateBuffer.Invoke(AudioBandBuffer);
+            OnUpdateBuffer?.Invoke(AudioBandBuffer);
         }
 
         private void GetSpectrumData()
