@@ -1,8 +1,8 @@
 using System;
-using Enums;
+using Assets.Enums.ChunkEnums;
 using UnityEngine;
 
-namespace ChunkSystem
+namespace Assets.ChunkSystem.ChunkElements
 {
     [Serializable]
     public class ChunkNode

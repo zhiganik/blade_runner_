@@ -1,8 +1,8 @@
-﻿using InputSystem;
+﻿using Assets.TestFolder;
 using UnityEngine;
 using Zenject;
 
-namespace MonoInstallers
+namespace Assets.MonoInstallers
 {
     public class PlayerSystemInstaller : MonoInstaller
     {

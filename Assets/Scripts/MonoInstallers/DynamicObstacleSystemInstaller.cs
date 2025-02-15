@@ -1,10 +1,8 @@
-using BladeRunner;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.DynamicEnvironment.ObstacleSystem.@base;
 using UnityEngine;
 using Zenject;
 
-namespace MonoInstallers
+namespace Assets.MonoInstallers
 {
     public class DynamicObstacleSystemInstaller : MonoInstaller
     {

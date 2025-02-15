@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.DynamicEnvironment.ObstacleSystem.@base
 {
     public interface IDynamicObstacleSystemService
     {

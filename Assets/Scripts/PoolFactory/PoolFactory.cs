@@ -1,4 +1,4 @@
-﻿namespace PoolFactory
+﻿namespace Assets.PoolFactory
 {
     public class PoolFactory<T> : IPoolFactory<T> where T : new()
     {

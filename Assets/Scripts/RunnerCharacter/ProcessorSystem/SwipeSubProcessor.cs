@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
-using BladeRunner;
+using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
-using Zenject;
 
-namespace RunnerCharacter.ProcessorSystem
+namespace Assets.RunnerCharacter.ProcessorSystem
 {
     public class SwipeSubProcessor : MonoBehaviour
     {

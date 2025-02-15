@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter
 {
     public class RunnerAnimator : MonoBehaviour
     {

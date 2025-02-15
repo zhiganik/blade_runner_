@@ -1,9 +1,9 @@
-using ChunkSystem;
-using ChunkSystem.ChunkElements;
+using Assets.ChunkSystem;
+using Assets.ChunkSystem.ChunkElements;
 using UnityEngine;
 using Zenject;
 
-namespace MonoInstallers
+namespace Assets.MonoInstallers
 {
     public class ChunkSystemInstaller : MonoInstaller
     {

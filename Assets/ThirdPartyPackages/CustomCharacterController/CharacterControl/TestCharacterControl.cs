@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace CharacterDevelopment
+namespace Assets.ThirdPartyPackages.CustomCharacterController.CharacterControl
 {
     public class TestCharacterControl : MonoBehaviour
     {

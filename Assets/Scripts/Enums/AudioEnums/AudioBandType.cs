@@ -1,4 +1,4 @@
-﻿namespace AudioSystem.AudioVisualizer
+﻿namespace Assets.Enums.AudioEnums
 {
     // https://fdstar.com/3456-pamyatka_muzykantu_chastoty.html
     // https://www.cuidevices.com/blog/understanding-audio-frequency-range-in-audio-design

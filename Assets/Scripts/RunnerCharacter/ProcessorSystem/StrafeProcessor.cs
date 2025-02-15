@@ -1,8 +1,7 @@
-﻿using System;
-using BladeRunner;
+﻿using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 
-namespace RunnerCharacter.ProcessorSystem
+namespace Assets.RunnerCharacter.ProcessorSystem
 {
     public class StrafeProcessor : SwipeSubProcessor
     {

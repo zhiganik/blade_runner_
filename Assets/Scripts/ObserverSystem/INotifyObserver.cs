@@ -1,4 +1,4 @@
-﻿namespace ObserverSystem
+﻿namespace Assets.ObserverSystem
 {
     public interface INotifyObserver<out T>
     {

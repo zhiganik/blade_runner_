@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IAudioReceiver
+namespace Assets.AudioSystem.AudioService
 {
-    void ReceiveAudioData(float[] channel);
+    public interface IAudioReceiver
+    {
+        void ReceiveAudioData(float[] channel);
+    }
 }

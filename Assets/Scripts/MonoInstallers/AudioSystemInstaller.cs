@@ -1,8 +1,8 @@
-﻿using AudioSystem.AudioService;
+﻿using Assets.AudioSystem.AudioService;
 using UnityEngine;
 using Zenject;
 
-namespace MonoInstallers
+namespace Assets.MonoInstallers
 {
     public class AudioSystemInstaller : MonoInstaller
     {

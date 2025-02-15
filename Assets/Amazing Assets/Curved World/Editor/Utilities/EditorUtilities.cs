@@ -3,6 +3,7 @@ using System.Linq;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 using UnityEngine;
 using UnityEditor;
 
@@ -27,9 +28,9 @@ namespace AmazingAssets
 
 
             static public readonly int MAX_SUPPORTED_BEND_IDS = 32;
-            static public readonly int MAX_SUPPORTED_BEND_TYPES = Enum.GetValues(typeof(CurvedWorld.BEND_TYPE)).Length;
-            static public string[] bendTypesNamesForLabel = Enum.GetValues(typeof(CurvedWorld.BEND_TYPE)).Cast<int>().Select(x => EditorUtilities.GetBendTypeNameInfo((CurvedWorld.BEND_TYPE)x).forLable).ToArray();
-            static public string[] bendTypesNamesForMenu = Enum.GetValues(typeof(CurvedWorld.BEND_TYPE)).Cast<int>().Select(x => EditorUtilities.GetBendTypeNameInfo((CurvedWorld.BEND_TYPE)x).forMenu).ToArray();
+            static public readonly int MAX_SUPPORTED_BEND_TYPES = Enum.GetValues(typeof(BEND_TYPE)).Length;
+            static public string[] bendTypesNamesForLabel = Enum.GetValues(typeof(BEND_TYPE)).Cast<int>().Select(x => EditorUtilities.GetBendTypeNameInfo((BEND_TYPE)x).forLable).ToArray();
+            static public string[] bendTypesNamesForMenu = Enum.GetValues(typeof(BEND_TYPE)).Cast<int>().Select(x => EditorUtilities.GetBendTypeNameInfo((BEND_TYPE)x).forMenu).ToArray();
 
 
             static public string shaderProprtyName_BendSettings = "_CurvedWorldBendSettings";
@@ -84,7 +85,7 @@ namespace AmazingAssets
                 return "#include " + pathToTransformCGINC;
             }
 
-            static public string GetBendFileLocation(CurvedWorld.BEND_TYPE bendType, int bendID, EXTENSTION extention)
+            static public string GetBendFileLocation(BEND_TYPE bendType, int bendID, EXTENSTION extention)
             {
                 if (projectBendsFilePathes == null)
                 {
@@ -142,19 +143,19 @@ namespace AmazingAssets
                 {
                     for (int j = 0; j < EditorUtilities.MAX_SUPPORTED_BEND_IDS; j++)
                     {
-                        GetBendFileLocation((CurvedWorld.BEND_TYPE)i, j, EXTENSTION.cginc);
-                        GetBendFileLocation((CurvedWorld.BEND_TYPE)i, j, EXTENSTION.UnityShaderGraphNormal);
-                        GetBendFileLocation((CurvedWorld.BEND_TYPE)i, j, EXTENSTION.UnityShaderGraphVertex);
-                        GetBendFileLocation((CurvedWorld.BEND_TYPE)i, j, EXTENSTION.AmplifyShaderEditorNormal);
-                        GetBendFileLocation((CurvedWorld.BEND_TYPE)i, j, EXTENSTION.AmplifyShaderEditorVertex);
+                        GetBendFileLocation((BEND_TYPE)i, j, EXTENSTION.cginc);
+                        GetBendFileLocation((BEND_TYPE)i, j, EXTENSTION.UnityShaderGraphNormal);
+                        GetBendFileLocation((BEND_TYPE)i, j, EXTENSTION.UnityShaderGraphVertex);
+                        GetBendFileLocation((BEND_TYPE)i, j, EXTENSTION.AmplifyShaderEditorNormal);
+                        GetBendFileLocation((BEND_TYPE)i, j, EXTENSTION.AmplifyShaderEditorVertex);
                     }
                 }
             }
 
 
-            static CurvedWorld.BEND_TYPE[] StringToBendTypes(string bendTypesString)
+            static BEND_TYPE[] StringToBendTypes(string bendTypesString)
             {
-                List<CurvedWorld.BEND_TYPE> list = new List<CurvedWorld.BEND_TYPE>();
+                List<BEND_TYPE> list = new List<BEND_TYPE>();
 
 
                 if (string.IsNullOrEmpty(bendTypesString) == false)
@@ -167,7 +168,7 @@ namespace AmazingAssets
                     {
                         for (int j = 0; j < bendTypes.Length; j++)
                         {
-                            CurvedWorld.BEND_TYPE bt;
+                            BEND_TYPE bt;
                             if (System.Enum.TryParse(bendTypes[j], out bt))
                             {
                                 list.Add(bt);
@@ -217,7 +218,7 @@ namespace AmazingAssets
             }
 
 
-            static public bool StringToBendSettings(string label, out CurvedWorld.BEND_TYPE[] bendTypes, out int[] bendIDs, out bool hasNormalTransform)
+            static public bool StringToBendSettings(string label, out BEND_TYPE[] bendTypes, out int[] bendIDs, out bool hasNormalTransform)
             {
                 bendTypes = null;
                 bendIDs = null;
@@ -252,26 +253,26 @@ namespace AmazingAssets
                 return false;
             }
 
-            static public string BendSettingsToString(CurvedWorld.BEND_TYPE[] bendTypes, int[] bendIDs, bool hasNormalTransform)
+            static public string BendSettingsToString(BEND_TYPE[] bendTypes, int[] bendIDs, bool hasNormalTransform)
             {
                 if (bendTypes == null || bendTypes.Length == 0 || bendIDs == null || bendIDs.Length == 0)
                     return string.Empty;
 
-                bendTypes = (new List<CurvedWorld.BEND_TYPE>(bendTypes)).Distinct().OrderBy(x => (int)x).ToArray();
+                bendTypes = (new List<BEND_TYPE>(bendTypes)).Distinct().OrderBy(x => (int)x).ToArray();
                 bendIDs = (new List<int>(bendIDs)).Distinct().OrderBy(x => x).ToArray();
 
 
                 return String.Join(",", bendTypes.Select(p => (int)p)) + "|" + String.Join(",", bendIDs) + (hasNormalTransform ? "|1" : string.Empty);
             }
 
-            static public void GetBendSettingsFromVector(Vector4 prop, out CurvedWorld.BEND_TYPE bendType, out int bendID, out bool normalTransform)
+            static public void GetBendSettingsFromVector(Vector4 prop, out BEND_TYPE bendType, out int bendID, out bool normalTransform)
             {
-                bendType = (CurvedWorld.BEND_TYPE)prop[0];
+                bendType = (BEND_TYPE)prop[0];
                 bendID = prop[1] <= 1 ? 1 : (int)prop[1];
                 normalTransform = prop[2] == 1 ? true : false;
             }
             
-            static public bool GetShaderSupportedBendSettings(Shader shader, out CurvedWorld.BEND_TYPE[] bendTypes, out int[] bendIDs, out bool hasNormalTransform)
+            static public bool GetShaderSupportedBendSettings(Shader shader, out BEND_TYPE[] bendTypes, out int[] bendIDs, out bool hasNormalTransform)
             {
                 bendTypes = null;
                 bendIDs = null;
@@ -304,9 +305,9 @@ namespace AmazingAssets
 
             }
 
-            static public bool AddShaderBendSettings(Shader shader, CurvedWorld.BEND_TYPE bendType, int bendID, KEYWORDS_COMPILE keywordsCompile, bool reimport)
+            static public bool AddShaderBendSettings(Shader shader, BEND_TYPE bendType, int bendID, KEYWORDS_COMPILE keywordsCompile, bool reimport)
             {
-                CurvedWorld.BEND_TYPE[] bendTypes;
+                BEND_TYPE[] bendTypes;
                 int[] bendIDs;
                 bool hasNormalTransform;
 
@@ -314,7 +315,7 @@ namespace AmazingAssets
                 {
                     if (bendTypes.Contains(bendType) == false)
                     {
-                        List<CurvedWorld.BEND_TYPE> temp = new List<CurvedWorld.BEND_TYPE>(bendTypes);
+                        List<BEND_TYPE> temp = new List<BEND_TYPE>(bendTypes);
                         temp.Add(bendType);
 
                         bendTypes = temp.ToArray();
@@ -335,7 +336,7 @@ namespace AmazingAssets
                 return false;
             }
 
-            static public bool SetShaderBendSettings(Shader shader, CurvedWorld.BEND_TYPE[] bendTypes, int[] bendIDs, KEYWORDS_COMPILE keywordsCompile, bool reimport)
+            static public bool SetShaderBendSettings(Shader shader, BEND_TYPE[] bendTypes, int[] bendIDs, KEYWORDS_COMPILE keywordsCompile, bool reimport)
             {
                 if (shader == null || bendTypes == null || bendTypes.Length == 0 || bendIDs == null || bendIDs.Length == 0)
                     return false;
@@ -498,7 +499,7 @@ namespace AmazingAssets
                 }
             }
 
-            static public void SetMaterialBendSettings(Material material, CurvedWorld.BEND_TYPE bendType, int bendID, bool normalTransform)
+            static public void SetMaterialBendSettings(Material material, BEND_TYPE bendType, int bendID, bool normalTransform)
             {
                 if (material != null && material.shader != null && material.HasProperty(shaderProprtyName_BendSettings))
                 {
@@ -506,7 +507,7 @@ namespace AmazingAssets
 
 
                     //Setup shader Bend Type
-                    CurvedWorld.BEND_TYPE[] shadersBendTypes;
+                    BEND_TYPE[] shadersBendTypes;
                     int[] shadersBendIDs;
                     bool hasNormalTransform;
 
@@ -514,7 +515,7 @@ namespace AmazingAssets
                     {
                         if (shadersBendTypes.Contains(bendType) == false)
                         {
-                            List<CurvedWorld.BEND_TYPE> temp = new List<CurvedWorld.BEND_TYPE>(shadersBendTypes);
+                            List<BEND_TYPE> temp = new List<BEND_TYPE>(shadersBendTypes);
                             temp.Add(bendType);
 
                             shadersBendTypes = temp.ToArray();
@@ -540,7 +541,7 @@ namespace AmazingAssets
                 }
             }
 
-            static public void UpdateMaterialKeyWords(Material material, CurvedWorld.BEND_TYPE bendType, int bendID, bool normalTransform)
+            static public void UpdateMaterialKeyWords(Material material, BEND_TYPE bendType, int bendID, bool normalTransform)
             {
                 if (material == null || material.shader == null)
                     return;
@@ -618,7 +619,7 @@ namespace AmazingAssets
 
             static public bool HasShaderNormalTransform(Shader shader)
             {
-                CurvedWorld.BEND_TYPE[] bendType;
+                BEND_TYPE[] bendType;
                 int[] bendID;
                 bool hasNormalTransform;
 
@@ -641,7 +642,7 @@ namespace AmazingAssets
 
 
 
-            static public string GetGeneratedFilePath(CurvedWorld.BEND_TYPE bendType, int bendID, EXTENSTION extention, bool createFolder)
+            static public string GetGeneratedFilePath(BEND_TYPE bendType, int bendID, EXTENSTION extention, bool createFolder)
             {
                 string filePath = string.Empty;
 
@@ -701,7 +702,7 @@ namespace AmazingAssets
                 return filePath;
             }
 
-            static public string GetTempleFilePath(CurvedWorld.BEND_TYPE bendType, EXTENSTION extention)
+            static public string GetTempleFilePath(BEND_TYPE bendType, EXTENSTION extention)
             {
                 string filePath = string.Empty;
 
@@ -743,7 +744,7 @@ namespace AmazingAssets
             }
 
 
-            static public string GetGeneratedTerrainShaderPath(CurvedWorld.BEND_TYPE bendType, int ID, bool createFolder)
+            static public string GetGeneratedTerrainShaderPath(BEND_TYPE bendType, int ID, bool createFolder)
             {
                 if (ID < 1)
                     ID = 1;
@@ -781,7 +782,7 @@ namespace AmazingAssets
                 return filePath;
             }
 
-            static public string GetGeneratedTerrainShadersFolderPath(CurvedWorld.BEND_TYPE bendType, int ID)
+            static public string GetGeneratedTerrainShadersFolderPath(BEND_TYPE bendType, int ID)
             {
                 string filePath = string.Empty;
 
@@ -804,7 +805,7 @@ namespace AmazingAssets
             }
 
 
-            public static string CreateCGINCFile(CurvedWorld.BEND_TYPE _BendType, int _BendID)
+            public static string CreateCGINCFile(BEND_TYPE _BendType, int _BendID)
             {
                 string templateFileLocation = EditorUtilities.GetTempleFilePath(_BendType, EditorUtilities.EXTENSTION.cginc);
                 if (File.Exists(templateFileLocation) == false)
@@ -843,7 +844,7 @@ namespace AmazingAssets
                     return null;
             }
 
-            public static void CreateSubGraphFile(CurvedWorld.BEND_TYPE _BendType, int _BendID, string localGUID, EditorUtilities.EXTENSTION extention)
+            public static void CreateSubGraphFile(BEND_TYPE _BendType, int _BendID, string localGUID, EditorUtilities.EXTENSTION extention)
             {
                 string templateFileLocation = EditorUtilities.GetTempleFilePath(_BendType, extention);
                 if (File.Exists(templateFileLocation) == false)
@@ -884,7 +885,7 @@ namespace AmazingAssets
 
 
 
-            static public BendTypeNameInfo GetBendTypeNameInfo(CurvedWorld.BEND_TYPE _bendType)
+            static public BendTypeNameInfo GetBendTypeNameInfo(BEND_TYPE _bendType)
             {
                 BendTypeNameInfo nameInfo;
 
@@ -898,7 +899,7 @@ namespace AmazingAssets
 
                 switch (_bendType)
                 {
-                    case CurvedWorld.BEND_TYPE.ClassicRunner_X_Positive:
+                    case BEND_TYPE.ClassicRunner_X_Positive:
                         nameInfo.nameOnly = "Classic Runner";
                         nameInfo.nameOnlyWithoutSpace = "ClassicRunner";
                         nameInfo.axisOnly = "X Positive";
@@ -906,7 +907,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Classic Runner/X Positive";
                         nameInfo.templateFileName = "ClassicRunner";
                         break;
-                    case CurvedWorld.BEND_TYPE.ClassicRunner_X_Negative:
+                    case BEND_TYPE.ClassicRunner_X_Negative:
                         nameInfo.nameOnly = "Classic Runner";
                         nameInfo.nameOnlyWithoutSpace = "ClassicRunner";
                         nameInfo.axisOnly = "X Negative";
@@ -914,7 +915,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Classic Runner/X Negative";
                         nameInfo.templateFileName = "ClassicRunner";
                         break;
-                    case CurvedWorld.BEND_TYPE.ClassicRunner_Z_Positive:
+                    case BEND_TYPE.ClassicRunner_Z_Positive:
                         nameInfo.nameOnly = "Classic Runner";
                         nameInfo.nameOnlyWithoutSpace = "ClassicRunner";
                         nameInfo.axisOnly = "Z Positive";
@@ -922,7 +923,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Classic Runner/Z Positive";
                         nameInfo.templateFileName = "ClassicRunner";
                         break;
-                    case CurvedWorld.BEND_TYPE.ClassicRunner_Z_Negative:
+                    case BEND_TYPE.ClassicRunner_Z_Negative:
                         nameInfo.nameOnly = "Classic Runner";
                         nameInfo.nameOnlyWithoutSpace = "ClassicRunner";
                         nameInfo.axisOnly = "Z Negative";
@@ -931,7 +932,7 @@ namespace AmazingAssets
                         nameInfo.templateFileName = "ClassicRunner";
                         break;
 
-                    case CurvedWorld.BEND_TYPE.LittlePlanet_X:
+                    case BEND_TYPE.LittlePlanet_X:
                         nameInfo.nameOnly = "Little Planet";
                         nameInfo.nameOnlyWithoutSpace = "LittlePlanet";
                         nameInfo.axisOnly = "X";
@@ -939,7 +940,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Little Planet/X";
                         nameInfo.templateFileName = "LittlePlanet";
                         break;
-                    case CurvedWorld.BEND_TYPE.LittlePlanet_Y:
+                    case BEND_TYPE.LittlePlanet_Y:
                         nameInfo.nameOnly = "Little Planet";
                         nameInfo.nameOnlyWithoutSpace = "LittlePlanet";
                         nameInfo.axisOnly = "Y";
@@ -947,7 +948,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Little Planet/Y";
                         nameInfo.templateFileName = "LittlePlanet";
                         break;
-                    case CurvedWorld.BEND_TYPE.LittlePlanet_Z:
+                    case BEND_TYPE.LittlePlanet_Z:
                         nameInfo.nameOnly = "Little Planet";
                         nameInfo.nameOnlyWithoutSpace = "LittlePlanet";
                         nameInfo.axisOnly = "Z";
@@ -957,7 +958,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.CylindricalRolloff_X:
+                    case BEND_TYPE.CylindricalRolloff_X:
                         nameInfo.nameOnly = "Cylindrical Rolloff";
                         nameInfo.nameOnlyWithoutSpace = "CylindricalRolloff";
                         nameInfo.axisOnly = "X";
@@ -965,7 +966,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Cylindrical Rolloff/X";
                         nameInfo.templateFileName = "CylindricalRolloff";
                         break;
-                    case CurvedWorld.BEND_TYPE.CylindricalRolloff_Z:
+                    case BEND_TYPE.CylindricalRolloff_Z:
                         nameInfo.nameOnly = "Cylindrical Rolloff";
                         nameInfo.nameOnlyWithoutSpace = "CylindricalRolloff";
                         nameInfo.axisOnly = "Z";
@@ -975,7 +976,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.CylindricalTower_X:
+                    case BEND_TYPE.CylindricalTower_X:
                         nameInfo.nameOnly = "Cylindrical Tower";
                         nameInfo.nameOnlyWithoutSpace = "CylindricalTower";
                         nameInfo.axisOnly = "X";
@@ -983,7 +984,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Cylindrical Tower/X";
                         nameInfo.templateFileName = "CylindricalTower";
                         break;
-                    case CurvedWorld.BEND_TYPE.CylindricalTower_Z:
+                    case BEND_TYPE.CylindricalTower_Z:
                         nameInfo.nameOnly = "Cylindrical Tower";
                         nameInfo.nameOnlyWithoutSpace = "CylindricalTower";
                         nameInfo.axisOnly = "Z";
@@ -993,7 +994,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontal_X_Positive:
+                    case BEND_TYPE.SpiralHorizontal_X_Positive:
                         nameInfo.nameOnly = "Spiral Horizontal";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontal";
                         nameInfo.axisOnly = "X Positive";
@@ -1001,7 +1002,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Horizontal/X Positive";
                         nameInfo.templateFileName = "Spiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontal_X_Negative:
+                    case BEND_TYPE.SpiralHorizontal_X_Negative:
                         nameInfo.nameOnly = "Spiral Horizontal";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontal";
                         nameInfo.axisOnly = "X Negative";
@@ -1009,7 +1010,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Horizontal/X Negative";
                         nameInfo.templateFileName = "Spiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontal_Z_Positive:
+                    case BEND_TYPE.SpiralHorizontal_Z_Positive:
                         nameInfo.nameOnly = "Spiral Horizontal";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontal";
                         nameInfo.axisOnly = "Z Positive";
@@ -1017,7 +1018,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Horizontal/Z Positive";
                         nameInfo.templateFileName = "Spiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontal_Z_Negative:
+                    case BEND_TYPE.SpiralHorizontal_Z_Negative:
                         nameInfo.nameOnly = "Spiral Horizontal";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontal";
                         nameInfo.axisOnly = "Z Negative";
@@ -1027,7 +1028,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontalRolloff_X:
+                    case BEND_TYPE.SpiralHorizontalRolloff_X:
                         nameInfo.nameOnly = "Spiral Horizontal Rolloff";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontalRolloff";
                         nameInfo.axisOnly = "X";
@@ -1035,7 +1036,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Horizontal Rolloff/X";
                         nameInfo.templateFileName = "SpiralRolloff";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontalRolloff_Z:
+                    case BEND_TYPE.SpiralHorizontalRolloff_Z:
                         nameInfo.nameOnly = "Spiral Horizontal Rolloff";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontalRolloff";
                         nameInfo.axisOnly = "Z";
@@ -1045,7 +1046,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontalDouble_X:
+                    case BEND_TYPE.SpiralHorizontalDouble_X:
                         nameInfo.nameOnly = "Spiral Horizontal Double";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontalDouble";
                         nameInfo.axisOnly = "X";
@@ -1053,7 +1054,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Horizontal Double/X";
                         nameInfo.templateFileName = "SpiralDouble";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralHorizontalDouble_Z:
+                    case BEND_TYPE.SpiralHorizontalDouble_Z:
                         nameInfo.nameOnly = "Spiral Horizontal Double";
                         nameInfo.nameOnlyWithoutSpace = "SpiralHorizontalDouble";
                         nameInfo.axisOnly = "Z";
@@ -1063,7 +1064,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.SpiralVertical_X_Positive:
+                    case BEND_TYPE.SpiralVertical_X_Positive:
                         nameInfo.nameOnly = "Spiral Vertical";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVertical";
                         nameInfo.axisOnly = "X Positive";
@@ -1071,7 +1072,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Vertical/X Positive";
                         nameInfo.templateFileName = "Spiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralVertical_X_Negative:
+                    case BEND_TYPE.SpiralVertical_X_Negative:
                         nameInfo.nameOnly = "Spiral Vertical";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVertical";
                         nameInfo.axisOnly = "X Negative";
@@ -1079,7 +1080,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Vertical/X Negative";
                         nameInfo.templateFileName = "Spiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralVertical_Z_Positive:
+                    case BEND_TYPE.SpiralVertical_Z_Positive:
                         nameInfo.nameOnly = "Spiral Vertical";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVertical";
                         nameInfo.axisOnly = "Z Positive";
@@ -1087,7 +1088,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Vertical/Z Positive";
                         nameInfo.templateFileName = "Spiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralVertical_Z_Negative:
+                    case BEND_TYPE.SpiralVertical_Z_Negative:
                         nameInfo.nameOnly = "Spiral Vertical";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVertical";
                         nameInfo.axisOnly = "Z Negative";
@@ -1097,7 +1098,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.SpiralVerticalRolloff_X:
+                    case BEND_TYPE.SpiralVerticalRolloff_X:
                         nameInfo.nameOnly = "Spiral Vertical Rolloff";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVerticalRolloff";
                         nameInfo.axisOnly = "X";
@@ -1105,7 +1106,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Vertical Rolloff/X";
                         nameInfo.templateFileName = "SpiralRolloff";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralVerticalRolloff_Z:
+                    case BEND_TYPE.SpiralVerticalRolloff_Z:
                         nameInfo.nameOnly = "Spiral Vertical Rolloff";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVerticalRolloff";
                         nameInfo.axisOnly = "Z";
@@ -1115,7 +1116,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.SpiralVerticalDouble_X:
+                    case BEND_TYPE.SpiralVerticalDouble_X:
                         nameInfo.nameOnly = "Spiral Vertical Double";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVerticalDouble";
                         nameInfo.axisOnly = "X";
@@ -1123,7 +1124,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Spiral Vertical Double/X";
                         nameInfo.templateFileName = "SpiralDouble";
                         break;
-                    case CurvedWorld.BEND_TYPE.SpiralVerticalDouble_Z:
+                    case BEND_TYPE.SpiralVerticalDouble_Z:
                         nameInfo.nameOnly = "Spiral Vertical Double";
                         nameInfo.nameOnlyWithoutSpace = "SpiralVerticalDouble";
                         nameInfo.axisOnly = "Z";
@@ -1133,7 +1134,7 @@ namespace AmazingAssets
                         break;
 
 
-                    case CurvedWorld.BEND_TYPE.TwistedSpiral_X_Positive:
+                    case BEND_TYPE.TwistedSpiral_X_Positive:
                         nameInfo.nameOnly = "Twisted Spiral";
                         nameInfo.nameOnlyWithoutSpace = "TwistedSpiral";
                         nameInfo.axisOnly = "X Positive";
@@ -1141,7 +1142,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Twisted Spiral/X Positive";
                         nameInfo.templateFileName = "TwistedSpiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.TwistedSpiral_X_Negative:
+                    case BEND_TYPE.TwistedSpiral_X_Negative:
                         nameInfo.nameOnly = "Twisted Spiral";
                         nameInfo.nameOnlyWithoutSpace = "TwistedSpiral";
                         nameInfo.axisOnly = "X Negative";
@@ -1149,7 +1150,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Twisted Spiral/X Negative";
                         nameInfo.templateFileName = "TwistedSpiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.TwistedSpiral_Z_Positive:
+                    case BEND_TYPE.TwistedSpiral_Z_Positive:
                         nameInfo.nameOnly = "Twisted Spiral";
                         nameInfo.nameOnlyWithoutSpace = "TwistedSpiral";
                         nameInfo.axisOnly = "Z Positive";
@@ -1157,7 +1158,7 @@ namespace AmazingAssets
                         nameInfo.forMenu = "Twisted Spiral/Z Positive";
                         nameInfo.templateFileName = "TwistedSpiral";
                         break;
-                    case CurvedWorld.BEND_TYPE.TwistedSpiral_Z_Negative:
+                    case BEND_TYPE.TwistedSpiral_Z_Negative:
                         nameInfo.nameOnly = "Twisted Spiral";
                         nameInfo.nameOnlyWithoutSpace = "TwistedSpiral";
                         nameInfo.axisOnly = "Z Negative";
@@ -1172,11 +1173,11 @@ namespace AmazingAssets
                 return nameInfo;
             }
 
-            static public GenericMenu BuildBendTypesMenu(CurvedWorld.BEND_TYPE _BendType, UnityEditor.GenericMenu.MenuFunction2 callback)
+            static public GenericMenu BuildBendTypesMenu(BEND_TYPE _BendType, UnityEditor.GenericMenu.MenuFunction2 callback)
             {
                 GenericMenu menu = new GenericMenu();
 
-                foreach (CurvedWorld.BEND_TYPE bendType in Enum.GetValues(typeof(CurvedWorld.BEND_TYPE)))
+                foreach (BEND_TYPE bendType in Enum.GetValues(typeof(BEND_TYPE)))
                 {
                     menu.AddItem(new GUIContent(EditorUtilities.GetBendTypeNameInfo(bendType).forMenu), _BendType == bendType, callback, bendType);
                 }
@@ -1234,7 +1235,7 @@ namespace AmazingAssets
             }
 
 
-            static public string GetKeywordName(CurvedWorld.BEND_TYPE bendType)
+            static public string GetKeywordName(BEND_TYPE bendType)
             {
                 return shaderKeywordPrefix_BendType + bendType.ToString().ToUpperInvariant();
             }
@@ -1409,7 +1410,7 @@ namespace AmazingAssets
                     return;
 
 
-                CurvedWorld.BEND_TYPE bendType = (CurvedWorld.BEND_TYPE)0;
+                BEND_TYPE bendType = (BEND_TYPE)0;
                 int bendID = 0;
 
                 int result;
@@ -1417,7 +1418,7 @@ namespace AmazingAssets
                 if (int.TryParse(info[0], out result))
                 {
                     if (result >= 0 && result < EditorUtilities.MAX_SUPPORTED_BEND_TYPES)
-                        bendType = (CurvedWorld.BEND_TYPE)result;
+                        bendType = (BEND_TYPE)result;
                     else
                         return;
                 }
@@ -1430,7 +1431,7 @@ namespace AmazingAssets
                         return;
                 }
 
-                CurvedWorld.CurvedWorldController[] sceneControllers = Resources.FindObjectsOfTypeAll<CurvedWorld.CurvedWorldController>();
+                CurvedWorldController[] sceneControllers = Resources.FindObjectsOfTypeAll<CurvedWorldController>();
                 if (sceneControllers != null && sceneControllers.Length > 0)
                 {
                     for (int i = 0; i < sceneControllers.Length; i++)
@@ -1506,7 +1507,7 @@ namespace AmazingAssets
                     return;
 
 
-                CurvedWorld.BEND_TYPE bendType = (CurvedWorld.BEND_TYPE)0;
+                BEND_TYPE bendType = (BEND_TYPE)0;
                 int bendID = 0;
 
                 int result;
@@ -1514,7 +1515,7 @@ namespace AmazingAssets
                 if (int.TryParse(info[0], out result))
                 {
                     if (result >= 0 && result < EditorUtilities.MAX_SUPPORTED_BEND_TYPES)
-                        bendType = (CurvedWorld.BEND_TYPE)result;
+                        bendType = (BEND_TYPE)result;
                     else
                         return;
                 }
@@ -1694,7 +1695,7 @@ namespace AmazingAssets
 
             public class ShaderCurvedWorldKeywordsInfo
             {
-                public CurvedWorld.BEND_TYPE[] supportedBendTypes;
+                public BEND_TYPE[] supportedBendTypes;
                 public bool[] selectedBendTypes;
 
                 public int[] supportedBendIDs;
@@ -1722,7 +1723,7 @@ namespace AmazingAssets
                         selectedBendTypes = new bool[MAX_SUPPORTED_BEND_TYPES];
                         for (int i = 0; i < MAX_SUPPORTED_BEND_TYPES; i++)
                         {
-                            selectedBendTypes[i] = supportedBendTypes.Contains((CurvedWorld.BEND_TYPE)i);
+                            selectedBendTypes[i] = supportedBendTypes.Contains((BEND_TYPE)i);
                         }
 
                         selectedBendIDs = new bool[EditorUtilities.MAX_SUPPORTED_BEND_IDS];
@@ -1763,13 +1764,13 @@ namespace AmazingAssets
                         return false;
                 }
 
-                public CurvedWorld.BEND_TYPE[] GetSelectedBendTypes()
+                public BEND_TYPE[] GetSelectedBendTypes()
                 {
-                    List<CurvedWorld.BEND_TYPE> bendTypes = new List<CurvedWorld.BEND_TYPE>();
+                    List<BEND_TYPE> bendTypes = new List<BEND_TYPE>();
                     for (int i = 0; i < EditorUtilities.MAX_SUPPORTED_BEND_TYPES; i++)
                     {
                         if (selectedBendTypes[i])
-                            bendTypes.Add((CurvedWorld.BEND_TYPE)i);
+                            bendTypes.Add((BEND_TYPE)i);
                     }
 
                     return bendTypes.ToArray();

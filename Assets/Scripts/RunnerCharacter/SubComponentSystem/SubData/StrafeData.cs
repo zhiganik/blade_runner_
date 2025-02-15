@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter.SubComponentSystem.SubData
 {
     [System.Serializable]
     public class StrafeData : Data

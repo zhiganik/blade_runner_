@@ -1,9 +1,8 @@
-﻿using AudioSystem.AudioVisualizer;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Assets.AudioSystem.AudioVisualizer;
 using UnityEngine;
 
-namespace AudioSystem.AudioService
+namespace Assets.AudioSystem.AudioService
 {
     [RequireComponent(typeof(AudioSource))]
     public class AudioSystemHandler : MonoBehaviour, IAudioSystemService

@@ -1,7 +1,8 @@
+using Assets.PoolFactory;
+using Assets.ScriptableObjects.ScriptableObjects.@base;
 using UnityEngine;
-using PoolFactory;
 
-namespace BladeRunner
+namespace Assets.DynamicEnvironment.ObstacleSystem.@base
 {
     public enum DynamicObstacleType
     {

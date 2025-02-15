@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Collections.Generic;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 using UnityEngine;
 using UnityEditor;
 
@@ -14,11 +15,11 @@ namespace AmazingAssets
 
             static public CurvedWorldBendSettingsEditorWindow window; 
 
-            public delegate void DataChanged(CurvedWorld.BEND_TYPE bendType, int bendID, int normalTransformState, object obj);
+            public delegate void DataChanged(BEND_TYPE bendType, int bendID, int normalTransformState, object obj);
             static DataChanged callback;
 
 
-            CurvedWorld.BEND_TYPE bendType;
+            BEND_TYPE bendType;
             int bendID;
 
             NORMAL_TRANSFORM normalTransform;
@@ -139,7 +140,7 @@ namespace AmazingAssets
 
             void CallbackBendTypeMenu(object obj)
             {
-                bendType = (CurvedWorld.BEND_TYPE)obj;
+                bendType = (BEND_TYPE)obj;
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PoolFactory
+namespace Assets.PoolFactory
 {
     public class Pool<T> where T : IPoolObject
     {

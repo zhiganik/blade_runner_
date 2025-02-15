@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files.Scripts
 {
     public class RunnerCar : MonoBehaviour
     {                

@@ -1,7 +1,7 @@
-using System;
+using Assets.RunnerCharacter.SubComponentSystem.Base;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter
 {
     public class Runner : MonoBehaviour
     {

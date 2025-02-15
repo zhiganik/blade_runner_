@@ -1,7 +1,7 @@
-﻿using RunnerCharacter.ProcessorSystem;
+﻿using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter
 {
     public static class Utils
     {

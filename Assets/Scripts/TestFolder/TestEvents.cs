@@ -1,10 +1,11 @@
 ﻿using System;
-using ChunkSystem;
-using ObserverSystem;
+using Assets.ChunkSystem;
+using Assets.Enums.ChunkEnums;
+using Assets.ObserverSystem;
 using UnityEngine;
 using Zenject;
 
-namespace InputSystem
+namespace Assets.TestFolder
 {
     public class TestEvents : MonoBehaviour, INotifyListener<ChunkCreationType>
     {

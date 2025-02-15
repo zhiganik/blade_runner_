@@ -1,9 +1,9 @@
 ﻿using System;
-using BladeRunner;
+using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RunnerCharacter.ProcessorSystem
+namespace Assets.RunnerCharacter.ProcessorSystem
 {
     public class SwipeProcessor : MonoBehaviour
     {

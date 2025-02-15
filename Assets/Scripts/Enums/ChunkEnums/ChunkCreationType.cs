@@ -1,4 +1,4 @@
-﻿namespace ChunkSystem
+﻿namespace Assets.Enums.ChunkEnums
 {
     public enum ChunkCreationType
     {

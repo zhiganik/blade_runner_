@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 using UnityEngine;
 using UnityEditor;
 
@@ -142,7 +143,7 @@ namespace AmazingAssets
             {
                 if (material.HasProperty(EditorUtilities.shaderProprtyName_BendSettings))
                 {
-                    CurvedWorld.BEND_TYPE bendType;
+                    BEND_TYPE bendType;
                     int bendID;
                     bool normalTransform;
 

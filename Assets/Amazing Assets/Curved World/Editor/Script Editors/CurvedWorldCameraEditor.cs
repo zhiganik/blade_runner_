@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
+using UnityEngine;
 using UnityEditor;
 
 namespace AmazingAssets
 {
     namespace CurvedWorldEditor
     {
-        [CustomEditor(typeof(CurvedWorld.CurvedWorldCamera))]
+        [CustomEditor(typeof(CurvedWorldCamera))]
         [CanEditMultipleObjects]
         public class CurvedWorldCameraEditor : Editor
         {
@@ -18,12 +19,12 @@ namespace AmazingAssets
                     for (int i = 0; i < Selection.gameObjects.Length; i++)
                     {
                         if (Selection.gameObjects[i] != null)
-                            Selection.gameObjects[i].AddComponent<CurvedWorld.CurvedWorldCamera>();
+                            Selection.gameObjects[i].AddComponent<CurvedWorldCamera>();
                     }
                 }
                 else if(Selection.activeGameObject != null)
                 {
-                    Selection.activeGameObject.AddComponent<CurvedWorld.CurvedWorldCamera>();
+                    Selection.activeGameObject.AddComponent<CurvedWorldCamera>();
                 }
             }
 
@@ -64,12 +65,12 @@ namespace AmazingAssets
                 GUILayout.Space(5);
                 EditorGUILayout.PropertyField(matrixType);
 
-                if (matrixType.enumValueIndex == (int)CurvedWorld.CurvedWorldCamera.MATRIX_TYPE.Perspective)
+                if (matrixType.enumValueIndex == (int)CurvedWorldCamera.MATRIX_TYPE.Perspective)
                     EditorGUILayout.PropertyField(fieldOfView);
                 else
                     EditorGUILayout.PropertyField(size);
 
-                if (matrixType.enumValueIndex == (int)CurvedWorld.CurvedWorldCamera.MATRIX_TYPE.Orthographic)
+                if (matrixType.enumValueIndex == (int)CurvedWorldCamera.MATRIX_TYPE.Orthographic)
                 {
                     nearClipPlaneSameAsCamera.boolValue = EditorGUILayout.IntPopup("Near Clip Plane", nearClipPlaneSameAsCamera.boolValue ? 1 : 0, new string[] { "Custom", "Same As Camera" }, new int[] { 0, 1 }) == 1 ? true : false;
                     if(nearClipPlaneSameAsCamera.boolValue == false)

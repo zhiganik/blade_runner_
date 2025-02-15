@@ -1,4 +1,4 @@
-﻿namespace PoolFactory
+﻿namespace Assets.PoolFactory
 {
     public interface IPoolObject
     {

@@ -1,7 +1,7 @@
-﻿using ChunkSystem.ChunkElements;
+﻿using Assets.ChunkSystem.ChunkElements;
 using UnityEngine;
 
-namespace ChunkSystem
+namespace Assets.ChunkSystem
 {
     public class ParticleConnector : MonoBehaviour
     {

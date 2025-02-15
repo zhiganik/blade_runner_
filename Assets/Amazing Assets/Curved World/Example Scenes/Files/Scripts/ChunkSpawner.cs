@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
 
-
-namespace AmazingAssets.CurvedWorld.Example
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files.Scripts
 {
     public class ChunkSpawner : MonoBehaviour
     {

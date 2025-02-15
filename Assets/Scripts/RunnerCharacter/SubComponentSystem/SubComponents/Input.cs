@@ -1,8 +1,9 @@
-using System;
+using Assets.RunnerCharacter.SubComponentSystem.Base;
+using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter.SubComponentSystem.SubComponents
 {
     public class Input : SubComponent
     {

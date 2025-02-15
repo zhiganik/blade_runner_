@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.RunnerCharacter.SubComponentSystem.Base;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter.SubComponentSystem.SubComponents
 {
     public class Attack : SubComponent
     {

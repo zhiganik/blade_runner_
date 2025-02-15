@@ -1,9 +1,7 @@
-using PoolFactory;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.DynamicEnvironment.ObstacleSystem.@base;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.DynamicEnvironment.ObstacleSystem.DynamicObstacles
 {
     public class TestSphere : DynamicObstacle
     {

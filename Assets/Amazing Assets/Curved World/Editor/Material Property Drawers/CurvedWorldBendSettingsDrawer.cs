@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 
 namespace AmazingAssets
 {
@@ -12,12 +13,12 @@ namespace AmazingAssets
         [CanEditMultipleObjects]
         public class CurvedWorldBendSettingsDrawer : MaterialPropertyDrawer
         {
-            static CurvedWorld.BEND_TYPE[] shaderSupportedBendTypes;
+            static BEND_TYPE[] shaderSupportedBendTypes;
             static int[] shaderSupportedBendIDs;
             static bool hasNormalTransform;
 
 
-            CurvedWorld.BEND_TYPE updateBendType;
+            BEND_TYPE updateBendType;
             int updateBendID;
             bool updateNormalTransform;
             Material updateMaterial;
@@ -37,7 +38,7 @@ namespace AmazingAssets
 
 
                 //Read settings
-                CurvedWorld.BEND_TYPE bendType;
+                BEND_TYPE bendType;
                 int bendID;
                 bool normalTransform;
 
@@ -81,7 +82,7 @@ namespace AmazingAssets
                 {
                     position.height = 18;
 
-                    bendType = (CurvedWorld.BEND_TYPE)EditorGUI.Popup(new Rect(position.xMin, position.yMin, position.width - 20, position.height), " ", (int)bendType, EditorUtilities.bendTypesNamesForMenu);
+                    bendType = (BEND_TYPE)EditorGUI.Popup(new Rect(position.xMin, position.yMin, position.width - 20, position.height), " ", (int)bendType, EditorUtilities.bendTypesNamesForMenu);
                     EditorGUI.LabelField(new Rect(position.xMin, position.yMin, position.width - 20, position.height), "Bend Type", EditorUtilities.GetBendTypeNameInfo(bendType).forLable, EditorStyles.popup);
 
 
@@ -181,7 +182,7 @@ namespace AmazingAssets
                 Init(prop.displayName);
 
                 //Read settings
-                CurvedWorld.BEND_TYPE bendType;
+                BEND_TYPE bendType;
                 int bendID;
                 bool enabledNormalTransform;
 

@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter.SubComponentSystem.Base
 {
     public abstract class SubComponent : MonoBehaviour
     {

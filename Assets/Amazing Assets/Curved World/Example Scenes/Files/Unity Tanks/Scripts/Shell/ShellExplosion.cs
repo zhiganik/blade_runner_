@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Complete
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files.Unity_Tanks.Scripts.Shell
 {
     public class ShellExplosion : MonoBehaviour
     {

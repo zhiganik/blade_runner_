@@ -1,9 +1,8 @@
 #pragma warning disable 0649
 
-using System;
 using UnityEngine;
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files._2D.Scripts
 {
     public class Perspective2D_PlatformerCharacter : MonoBehaviour
     {

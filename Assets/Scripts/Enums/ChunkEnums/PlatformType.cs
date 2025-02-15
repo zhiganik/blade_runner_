@@ -1,4 +1,4 @@
-﻿namespace Enums
+﻿namespace Assets.Enums.ChunkEnums
 {
     public enum PlatformType
     {

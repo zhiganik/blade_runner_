@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-namespace AmazingAssets
+namespace Assets.Amazing_Assets.Curved_World.Scripts
 {
     namespace CurvedWorld
     {

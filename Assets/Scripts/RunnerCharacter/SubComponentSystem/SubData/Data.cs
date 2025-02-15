@@ -1,4 +1,7 @@
-﻿public class Data
+﻿namespace Assets.RunnerCharacter.SubComponentSystem.SubData
 {
+    public class Data
+    {
     
+    }
 }

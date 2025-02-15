@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using ChunkSystem;
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 
-namespace InputSystem
+namespace Assets.TestFolder
 {
     public class CameraTest : MonoBehaviour
     {

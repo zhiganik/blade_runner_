@@ -1,4 +1,4 @@
-﻿namespace Enums.AudioEnums
+﻿namespace Assets.Enums.AudioEnums
 {
     public enum ScaleVector
     {

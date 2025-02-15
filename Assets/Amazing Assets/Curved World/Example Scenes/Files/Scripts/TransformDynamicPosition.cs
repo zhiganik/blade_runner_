@@ -1,12 +1,12 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
+using UnityEngine;
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files.Scripts
 {
     [ExecuteAlways]
     public class TransformDynamicPosition : MonoBehaviour
     {
-        public CurvedWorld.CurvedWorldController curvedWorldController;
+        public CurvedWorldController curvedWorldController;
 
         public Transform parent;
 

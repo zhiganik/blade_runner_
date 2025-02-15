@@ -1,8 +1,7 @@
-﻿using AudioSystem.AudioVisualizer;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace AudioSystem.AudioService
+namespace Assets.AudioSystem.AudioService
 {
     public interface IAudioSystemService
     {

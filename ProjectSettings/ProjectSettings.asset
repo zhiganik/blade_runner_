@@ -164,7 +164,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: com.DefaultCompany.blade_runner
-    Standalone: com.DefaultCompany.bladerunner
+    Standalone: com.DefaultCompany.blade-runner
   buildNumber:
     Standalone: 0
     VisionOS: 0

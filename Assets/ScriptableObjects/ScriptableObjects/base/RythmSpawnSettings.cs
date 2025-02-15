@@ -1,10 +1,9 @@
-using AudioSystem.AudioVisualizer;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Enums.AudioEnums;
+using Assets.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace BladeRunner
+namespace Assets.ScriptableObjects.ScriptableObjects.@base
 {
     [CreateAssetMenu(fileName = "NewRythmSpawnSettings", menuName = "BladeRunner/RythmSpawnSettings")]
     public class RythmSpawnSettings : ScriptableObject

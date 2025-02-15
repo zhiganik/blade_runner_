@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Complete
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files.Unity_Tanks.Scripts.Tank
 {
     public class TankShooting : MonoBehaviour
     {

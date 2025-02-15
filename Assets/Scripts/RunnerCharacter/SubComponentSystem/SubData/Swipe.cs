@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter.SubComponentSystem.SubData
 {
     public class Swipe
     {

@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Assets.Amazing_Assets.Curved_World.Example_Scenes.Files.Scripts
 {
     public class ManualControllerUpdate : MonoBehaviour
     {        

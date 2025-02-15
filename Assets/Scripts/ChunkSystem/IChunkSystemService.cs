@@ -1,6 +1,6 @@
-﻿using ChunkSystem.ChunkElements;
+﻿using Assets.ChunkSystem.ChunkElements;
 
-namespace ChunkSystem
+namespace Assets.ChunkSystem
 {
     public interface IChunkSystemService
     {

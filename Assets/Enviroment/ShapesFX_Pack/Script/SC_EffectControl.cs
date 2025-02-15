@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ShapesFX
+namespace Assets.Enviroment.ShapesFX_Pack.Script
 {
     public class SC_EffectControl : MonoBehaviour
     {

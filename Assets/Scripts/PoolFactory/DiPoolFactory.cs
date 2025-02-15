@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace PoolFactory
+namespace Assets.PoolFactory
 {
     public class DiPoolFactory<T> : IPoolFactory<T> where T : MonoBehaviour
     {

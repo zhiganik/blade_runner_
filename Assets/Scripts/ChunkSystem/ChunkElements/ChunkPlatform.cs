@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using AudioSystem.AudioService;
-using Enums;
-using InputSystem;
-using PoolFactory;
+using Assets.AudioSystem.AudioService;
+using Assets.Enums.ChunkEnums;
+using Assets.PoolFactory;
+using Assets.TestFolder;
 using UnityEngine;
 using Zenject;
 
-namespace ChunkSystem.ChunkElements
+namespace Assets.ChunkSystem.ChunkElements
 {
     public class DiChunkFactory : PlaceholderFactory<ChunkPlatform>{}
     

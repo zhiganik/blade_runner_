@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LivingParticleController : MonoBehaviour {
+namespace Assets.Enviroment.SineVFX.LivingParticles.Resources.Scripts
+{
+	public class LivingParticleController : MonoBehaviour {
 
-    public Transform affector;
+		public Transform affector;
 
-    private ParticleSystemRenderer psr;
+		private ParticleSystemRenderer psr;
 
-	void Start () {
-        psr = GetComponent<ParticleSystemRenderer>();
-	}
+		void Start () {
+			psr = GetComponent<ParticleSystemRenderer>();
+		}
 	
-	void Update () {
-        psr.material.SetVector("_Affector", affector.position);
-    }
+		void Update () {
+			psr.material.SetVector("_Affector", affector.position);
+		}
+	}
 }

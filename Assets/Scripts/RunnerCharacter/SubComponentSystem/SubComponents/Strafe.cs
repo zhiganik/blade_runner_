@@ -1,8 +1,8 @@
-﻿using System;
-using RunnerCharacter.ProcessorSystem;
+﻿using Assets.RunnerCharacter.SubComponentSystem.Base;
+using Assets.RunnerCharacter.SubComponentSystem.SubData;
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.RunnerCharacter.SubComponentSystem.SubComponents
 {
     public class Strafe : SubComponent
     {

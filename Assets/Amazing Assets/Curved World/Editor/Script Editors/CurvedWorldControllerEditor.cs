@@ -2,12 +2,13 @@
 using UnityEditor;
 using System.Collections;
 using System.IO;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 
 namespace AmazingAssets
 {
     namespace CurvedWorldEditor
     {
-        [CustomEditor(typeof(CurvedWorld.CurvedWorldController))]
+        [CustomEditor(typeof(CurvedWorldController))]
         public class CurvedWorldControllerEditor : Editor
         {
             #region Component Menu
@@ -19,12 +20,12 @@ namespace AmazingAssets
                     for (int i = 0; i < Selection.gameObjects.Length; i++)
                     {
                         if (Selection.gameObjects[i] != null)
-                            Selection.gameObjects[i].AddComponent<CurvedWorld.CurvedWorldController>();
+                            Selection.gameObjects[i].AddComponent<CurvedWorldController>();
                     }
                 }
                 else if (Selection.activeGameObject != null)
                 {
-                    Selection.activeGameObject.AddComponent<CurvedWorld.CurvedWorldController>();
+                    Selection.activeGameObject.AddComponent<CurvedWorldController>();
                 }
             }
 
@@ -37,7 +38,7 @@ namespace AmazingAssets
 
 
             #region Variables
-            public CurvedWorld.CurvedWorldController _target;
+            public CurvedWorldController _target;
 
             SerializedProperty bendType;
             SerializedProperty bendID;
@@ -65,7 +66,7 @@ namespace AmazingAssets
             {
                 try
                 {
-                    _target = (CurvedWorld.CurvedWorldController)target;
+                    _target = (CurvedWorldController)target;
                 }
                 catch
                 {
@@ -128,10 +129,10 @@ namespace AmazingAssets
                     #region Bend Controllers
                     switch (_target.bendType)
                     {
-                        case CurvedWorld.BEND_TYPE.ClassicRunner_X_Positive:
-                        case CurvedWorld.BEND_TYPE.ClassicRunner_X_Negative:
-                        case CurvedWorld.BEND_TYPE.ClassicRunner_Z_Positive:
-                        case CurvedWorld.BEND_TYPE.ClassicRunner_Z_Negative:
+                        case BEND_TYPE.ClassicRunner_X_Positive:
+                        case BEND_TYPE.ClassicRunner_X_Negative:
+                        case BEND_TYPE.ClassicRunner_Z_Positive:
+                        case BEND_TYPE.ClassicRunner_Z_Negative:
                             {
                                 EditorGUILayout.BeginVertical();
                                 GUILayout.Space(5);
@@ -150,10 +151,10 @@ namespace AmazingAssets
                             }
                             break;
 
-                        case CurvedWorld.BEND_TYPE.TwistedSpiral_X_Positive:
-                        case CurvedWorld.BEND_TYPE.TwistedSpiral_X_Negative:
-                        case CurvedWorld.BEND_TYPE.TwistedSpiral_Z_Positive:
-                        case CurvedWorld.BEND_TYPE.TwistedSpiral_Z_Negative:
+                        case BEND_TYPE.TwistedSpiral_X_Positive:
+                        case BEND_TYPE.TwistedSpiral_X_Negative:
+                        case BEND_TYPE.TwistedSpiral_Z_Positive:
+                        case BEND_TYPE.TwistedSpiral_Z_Negative:
                             {
                                 EditorGUILayout.BeginVertical();
                                 GUILayout.Space(5);
@@ -174,13 +175,13 @@ namespace AmazingAssets
                             }
                             break;
 
-                        case CurvedWorld.BEND_TYPE.LittlePlanet_X:
-                        case CurvedWorld.BEND_TYPE.LittlePlanet_Y:
-                        case CurvedWorld.BEND_TYPE.LittlePlanet_Z:
-                        case CurvedWorld.BEND_TYPE.CylindricalTower_X:
-                        case CurvedWorld.BEND_TYPE.CylindricalTower_Z:
-                        case CurvedWorld.BEND_TYPE.CylindricalRolloff_X:
-                        case CurvedWorld.BEND_TYPE.CylindricalRolloff_Z:
+                        case BEND_TYPE.LittlePlanet_X:
+                        case BEND_TYPE.LittlePlanet_Y:
+                        case BEND_TYPE.LittlePlanet_Z:
+                        case BEND_TYPE.CylindricalTower_X:
+                        case BEND_TYPE.CylindricalTower_Z:
+                        case BEND_TYPE.CylindricalRolloff_X:
+                        case BEND_TYPE.CylindricalRolloff_Z:
                             {
                                 EditorGUILayout.BeginVertical();
                                 GUILayout.Space(5);
@@ -197,14 +198,14 @@ namespace AmazingAssets
                             }
                             break;
 
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontal_X_Positive:
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontal_X_Negative:
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontal_Z_Positive:
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontal_Z_Negative:
-                        case CurvedWorld.BEND_TYPE.SpiralVertical_X_Positive:
-                        case CurvedWorld.BEND_TYPE.SpiralVertical_X_Negative:
-                        case CurvedWorld.BEND_TYPE.SpiralVertical_Z_Positive:
-                        case CurvedWorld.BEND_TYPE.SpiralVertical_Z_Negative:
+                        case BEND_TYPE.SpiralHorizontal_X_Positive:
+                        case BEND_TYPE.SpiralHorizontal_X_Negative:
+                        case BEND_TYPE.SpiralHorizontal_Z_Positive:
+                        case BEND_TYPE.SpiralHorizontal_Z_Negative:
+                        case BEND_TYPE.SpiralVertical_X_Positive:
+                        case BEND_TYPE.SpiralVertical_X_Negative:
+                        case BEND_TYPE.SpiralVertical_Z_Positive:
+                        case BEND_TYPE.SpiralVertical_Z_Negative:
                             {
                                 EditorGUILayout.BeginVertical();
                                 GUILayout.Space(5);
@@ -226,10 +227,10 @@ namespace AmazingAssets
                             }
                             break;
 
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontalDouble_X:
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontalDouble_Z:
-                        case CurvedWorld.BEND_TYPE.SpiralVerticalDouble_X:
-                        case CurvedWorld.BEND_TYPE.SpiralVerticalDouble_Z:
+                        case BEND_TYPE.SpiralHorizontalDouble_X:
+                        case BEND_TYPE.SpiralHorizontalDouble_Z:
+                        case BEND_TYPE.SpiralVerticalDouble_X:
+                        case BEND_TYPE.SpiralVerticalDouble_Z:
                             {
                                 EditorGUILayout.BeginVertical();
                                 GUILayout.Space(5);
@@ -258,10 +259,10 @@ namespace AmazingAssets
                             }
                             break;
 
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontalRolloff_X:
-                        case CurvedWorld.BEND_TYPE.SpiralHorizontalRolloff_Z:
-                        case CurvedWorld.BEND_TYPE.SpiralVerticalRolloff_X:
-                        case CurvedWorld.BEND_TYPE.SpiralVerticalRolloff_Z:
+                        case BEND_TYPE.SpiralHorizontalRolloff_X:
+                        case BEND_TYPE.SpiralHorizontalRolloff_Z:
+                        case BEND_TYPE.SpiralVerticalRolloff_X:
+                        case BEND_TYPE.SpiralVerticalRolloff_Z:
                             {
                                 EditorGUILayout.BeginVertical();
                                 GUILayout.Space(5);
@@ -419,10 +420,10 @@ namespace AmazingAssets
             void Draw_RotationCenter()
             {
                 string label = "Rotation Center";
-                if (_target.bendType == CurvedWorld.BEND_TYPE.SpiralHorizontalDouble_X ||
-                    _target.bendType == CurvedWorld.BEND_TYPE.SpiralHorizontalDouble_Z ||
-                    _target.bendType == CurvedWorld.BEND_TYPE.SpiralVerticalDouble_X ||
-                    _target.bendType == CurvedWorld.BEND_TYPE.SpiralVerticalDouble_Z)
+                if (_target.bendType == BEND_TYPE.SpiralHorizontalDouble_X ||
+                    _target.bendType == BEND_TYPE.SpiralHorizontalDouble_Z ||
+                    _target.bendType == BEND_TYPE.SpiralVerticalDouble_X ||
+                    _target.bendType == BEND_TYPE.SpiralVerticalDouble_Z)
                 {
                     label += " #1";
                 }
@@ -480,7 +481,7 @@ namespace AmazingAssets
             void Draw_PivotPointAxis()
             {
                 //Axis
-                using (new AmazingAssets.EditorGUIUtility.GUIEnabled(bendRotationAxisType.enumValueIndex != (int)CurvedWorld.CurvedWorldController.AXIS_TYPE.Transform))
+                using (new AmazingAssets.EditorGUIUtility.GUIEnabled(bendRotationAxisType.enumValueIndex != (int)CurvedWorldController.AXIS_TYPE.Transform))
                 {
                     using (new AmazingAssets.EditorGUIUtility.GUIBackgroundColor(bendRotationAxis.vector3Value.magnitude <= 0.0001f ? Color.red : Color.white))
                     {
@@ -592,7 +593,7 @@ namespace AmazingAssets
 
             void MenuCallbackBendType(object obj)
             {
-                CurvedWorld.BEND_TYPE newBendType = (CurvedWorld.BEND_TYPE)obj;
+                BEND_TYPE newBendType = (BEND_TYPE)obj;
 
                 Undo.RecordObject(_target, "Change Bend Type");
 

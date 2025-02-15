@@ -1,9 +1,9 @@
 ﻿using System;
-using Enums.AudioEnums;
+using Assets.Enums.AudioEnums;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace AudioSystem.AudioVisualizer
+namespace Assets.AudioSystem.AudioVisualizer
 {
     public class ScaleMusicElement : MonoBehaviour
     {

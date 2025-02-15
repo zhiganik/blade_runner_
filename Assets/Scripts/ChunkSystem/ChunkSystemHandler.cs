@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ChunkSystem.ChunkElements;
-using Enums;
-using InputSystem;
-using ObserverSystem;
-using PoolFactory;
+using Assets.ChunkSystem.ChunkElements;
+using Assets.Enums.ChunkEnums;
+using Assets.ObserverSystem;
+using Assets.PoolFactory;
+using Assets.TestFolder;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace ChunkSystem
+namespace Assets.ChunkSystem
 {
     public class ChunkSystemHandler : MonoBehaviour, IChunkSystemService, INotifyObserver<ChunkCreationType>
     {

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 using UnityEngine;
 using UnityEditor;
 
@@ -24,10 +25,10 @@ namespace AmazingAssets
 
 
 
-            public CurvedWorld.BEND_TYPE gBendType = CurvedWorld.BEND_TYPE.ClassicRunner_X_Positive;
+            public BEND_TYPE gBendType = BEND_TYPE.ClassicRunner_X_Positive;
             public int gBendID = 1;
 
-            static CurvedWorld.CurvedWorldController[] gSceneControllers;
+            static CurvedWorldController[] gSceneControllers;
 
             RENDERERS_OVERVIEW_MODE gRenderersOverviewMode;
             List<EditorUtilities.ShaderOverview> gRenderersOverviewList;
@@ -653,7 +654,7 @@ namespace AmazingAssets
                             gameObject.transform.rotation = Quaternion.identity;
                             gameObject.transform.localScale = Vector3.one;
 
-                            gameObject.AddComponent<CurvedWorld.CurvedWorldController>();
+                            gameObject.AddComponent<CurvedWorldController>();
 
 
                             gSceneControllers = null;
@@ -1144,11 +1145,11 @@ namespace AmazingAssets
                             if (GUI.Button(saveButtonRect, "Save   <size=10>(Keywords: " + usedKeywordsCount + ")   " + (gCurvedWorldKeywordsShaderInfo.selecedMultiCompile ? "multi_compile" : "shader_feature") + "</size>", guiStyleAnalyzeSaveButton))
                             {
 
-                                List<CurvedWorld.BEND_TYPE> selectedBendTypes = new List<CurvedWorld.BEND_TYPE>();
+                                List<BEND_TYPE> selectedBendTypes = new List<BEND_TYPE>();
                                 for (int i = 0; i < EditorUtilities.MAX_SUPPORTED_BEND_TYPES; i++)
                                 {
                                     if (gCurvedWorldKeywordsShaderInfo.selectedBendTypes[i])
-                                        selectedBendTypes.Add((CurvedWorld.BEND_TYPE)i);
+                                        selectedBendTypes.Add((BEND_TYPE)i);
                                 }
 
                                 List<int> selectedIDs = new List<int>();
@@ -1208,7 +1209,7 @@ namespace AmazingAssets
                                 {
                                     if (gCurvedWorldKeywordsShaderInfo.selectedBendTypes[j])
                                     {
-                                        string bendFileLocation = EditorUtilities.GetBendFileLocation((CurvedWorld.BEND_TYPE)j, i + 1, EditorUtilities.EXTENSTION.cginc);
+                                        string bendFileLocation = EditorUtilities.GetBendFileLocation((BEND_TYPE)j, i + 1, EditorUtilities.EXTENSTION.cginc);
                                         if (File.Exists(bendFileLocation) == false)
                                         {
                                             isBendIDSupported = false;
@@ -1249,7 +1250,7 @@ namespace AmazingAssets
                                         {
                                             if (gCurvedWorldKeywordsShaderInfo.selectedBendIDs[j])
                                             {
-                                                string bendFileLocation = EditorUtilities.GetBendFileLocation((CurvedWorld.BEND_TYPE)i, j + 1, EditorUtilities.EXTENSTION.cginc);
+                                                string bendFileLocation = EditorUtilities.GetBendFileLocation((BEND_TYPE)i, j + 1, EditorUtilities.EXTENSTION.cginc);
                                                 if (File.Exists(bendFileLocation) == false)
                                                 {
                                                     isBendTypeSupported = false;
@@ -1264,7 +1265,7 @@ namespace AmazingAssets
                                     }
 
 
-                                    EditorUtilities.BendTypeNameInfo info = EditorUtilities.GetBendTypeNameInfo((CurvedWorld.BEND_TYPE)i);
+                                    EditorUtilities.BendTypeNameInfo info = EditorUtilities.GetBendTypeNameInfo((BEND_TYPE)i);
                                     gCurvedWorldKeywordsShaderInfo.selectedBendTypes[i] = EditorGUI.ToggleLeft(rc, info.forMenu, gCurvedWorldKeywordsShaderInfo.selectedBendTypes[i]);
                                 }
                             }
@@ -1644,7 +1645,7 @@ namespace AmazingAssets
                 file.Add("#endif");
                 file.Add(System.Environment.NewLine);
 
-                foreach (CurvedWorld.BEND_TYPE bendType in Enum.GetValues(typeof(CurvedWorld.BEND_TYPE)))
+                foreach (BEND_TYPE bendType in Enum.GetValues(typeof(BEND_TYPE)))
                 {
                     if ((int)bendType == 0)
                         file.Add("#if defined (" + EditorUtilities.shaderKeywordPrefix_BendType + bendType.ToString().ToUpperInvariant() + ")");
@@ -1694,10 +1695,10 @@ namespace AmazingAssets
 
             void FindSceneCurvedWorldControllers()
             {
-                gSceneControllers = Resources.FindObjectsOfTypeAll<CurvedWorld.CurvedWorldController>();
+                gSceneControllers = Resources.FindObjectsOfTypeAll<CurvedWorldController>();
 
                 if (gSceneControllers == null)
-                    gSceneControllers = new CurvedWorld.CurvedWorldController[] { null };
+                    gSceneControllers = new CurvedWorldController[] { null };
                 else
                     gSceneControllers = gSceneControllers.OrderBy(s => (s.bendType.ToString() + s.bendID.ToString())).ToArray();
             }
@@ -1862,9 +1863,9 @@ namespace AmazingAssets
 
             void CallbackBendTypeMenu(object obj)
             {
-                CurvedWorld.BEND_TYPE newBendType = (CurvedWorld.BEND_TYPE)obj;
+                BEND_TYPE newBendType = (BEND_TYPE)obj;
 
-                gBendType = (CurvedWorld.BEND_TYPE)obj;
+                gBendType = (BEND_TYPE)obj;
             }
 
             void CallBackRenderersOverviewShaderChanged(object obj)
@@ -1894,7 +1895,7 @@ namespace AmazingAssets
                     return;
 
 
-                CurvedWorld.BEND_TYPE[] bendTypes;
+                BEND_TYPE[] bendTypes;
                 int[] bendIDs;
                 bool hasNormalTransform;
 
@@ -2067,7 +2068,7 @@ namespace AmazingAssets
 
                         if (material.HasProperty(EditorUtilities.shaderProprtyName_BendSettings))
                         {
-                            CurvedWorld.BEND_TYPE bendType;
+                            BEND_TYPE bendType;
                             int bendID;
                             bool normalTransform;
 
@@ -2077,7 +2078,7 @@ namespace AmazingAssets
 
                             if (shaderData[material.shader].supportedBendTypes.Contains(bendType) == false)
                             {
-                                List<CurvedWorld.BEND_TYPE> newBendTypes = new List<CurvedWorld.BEND_TYPE>(shaderData[material.shader].supportedBendTypes);
+                                List<BEND_TYPE> newBendTypes = new List<BEND_TYPE>(shaderData[material.shader].supportedBendTypes);
                                 newBendTypes.Add(bendType);
 
                                 shaderData[material.shader].supportedBendTypes = newBendTypes.ToArray();
@@ -2139,7 +2140,7 @@ namespace AmazingAssets
                 CurvedWorldBendSettingsEditorWindow.ShowWindow(GUIUtility.GUIToScreenPoint(mousePosition), CallbackRenderersOverviewAdjustCurvedWorld, obj);
             }
 
-            void CallbackRenderersOverviewAdjustCurvedWorld(CurvedWorld.BEND_TYPE bendType, int bendID, int normalTransformState, object obj)
+            void CallbackRenderersOverviewAdjustCurvedWorld(BEND_TYPE bendType, int bendID, int normalTransformState, object obj)
             {
 
                 if (File.Exists(EditorUtilities.GetBendFileLocation(bendType, bendID, EditorUtilities.EXTENSTION.cginc)) == false)
@@ -2206,7 +2207,7 @@ namespace AmazingAssets
                     return;
 
 
-                CurvedWorld.BEND_TYPE[] bendTypes;
+                BEND_TYPE[] bendTypes;
                 int[] bendIDs;
                 bool hasNormalTransform;
 

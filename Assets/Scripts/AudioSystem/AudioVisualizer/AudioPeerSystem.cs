@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AudioSystem.AudioVisualizer
+namespace Assets.AudioSystem.AudioVisualizer
 {
     [RequireComponent(typeof(AudioSource))]
     public class AudioPeerSystem : MonoBehaviour

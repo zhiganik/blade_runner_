@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BladeRunner
+namespace Assets.DynamicEnvironment.ObstacleSystem.DynamicObstacles
 {
     public static class PositionSetter 
     {

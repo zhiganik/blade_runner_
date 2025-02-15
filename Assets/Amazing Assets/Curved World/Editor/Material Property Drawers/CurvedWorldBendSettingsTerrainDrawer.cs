@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
 
 
 namespace AmazingAssets
@@ -21,17 +22,17 @@ namespace AmazingAssets
                 public static string bendTransformNormal = "Transform Normal";
             }
 
-            CurvedWorld.BEND_TYPE shaderSupportedBendType;
+            BEND_TYPE shaderSupportedBendType;
             int shaderSupportedBendID;
 
-            CurvedWorld.BEND_TYPE updateBendType;
+            BEND_TYPE updateBendType;
             int updateBendID;
             Material updateMaterial;
 
 
             void Init(string label)
             {
-                CurvedWorld.BEND_TYPE[] bendTypes;
+                BEND_TYPE[] bendTypes;
                 int[] bendIDs;
                 bool hasNormalTransform;
 
@@ -49,7 +50,7 @@ namespace AmazingAssets
                 Init(prop.displayName);
 
 
-                CurvedWorld.BEND_TYPE bendType;
+                BEND_TYPE bendType;
                 int bendID;
                 bool normalTransform;
 
@@ -60,7 +61,7 @@ namespace AmazingAssets
                 EditorGUI.BeginChangeCheck();
                 using (new AmazingAssets.EditorGUIUtility.EditorGUILayoutBeginHorizontal())
                 {
-                    bendType = (CurvedWorld.BEND_TYPE)EditorGUILayout.Popup(" ", (int)bendType, EditorUtilities.bendTypesNamesForMenu);
+                    bendType = (BEND_TYPE)EditorGUILayout.Popup(" ", (int)bendType, EditorUtilities.bendTypesNamesForMenu);
                     EditorGUI.LabelField(GUILayoutUtility.GetLastRect(), "Bend Type", EditorUtilities.GetBendTypeNameInfo(bendType).forLable, EditorStyles.popup);
 
                     if (GUILayout.Button("≡", GUILayout.MaxWidth(20)))

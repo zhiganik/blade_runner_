@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using Assets.Amazing_Assets.Curved_World.Scripts.CurvedWorld;
+using UnityEngine;
 using UnityEditor;
 
 namespace AmazingAssets
 {
     namespace CurvedWorldEditor
     {
-        [CustomEditor(typeof(CurvedWorld.CurvedWorldBoundingBox))]
+        [CustomEditor(typeof(CurvedWorldBoundingBox))]
         [CanEditMultipleObjects] 
         public class CurvedWorldBoundingBoxEditor : Editor
         {
@@ -18,12 +19,12 @@ namespace AmazingAssets
                     for (int i = 0; i < Selection.gameObjects.Length; i++)
                     {
                         if (Selection.gameObjects[i] != null)
-                            Selection.gameObjects[i].AddComponent<CurvedWorld.CurvedWorldBoundingBox>();
+                            Selection.gameObjects[i].AddComponent<CurvedWorldBoundingBox>();
                     }
                 }
                 else if (Selection.activeGameObject != null)
                 {
-                    Selection.activeGameObject.AddComponent<CurvedWorld.CurvedWorldBoundingBox>();
+                    Selection.activeGameObject.AddComponent<CurvedWorldBoundingBox>();
                 }
             }
 
@@ -60,7 +61,7 @@ namespace AmazingAssets
 
                     if(GUILayout.Button("Recalculate", GUILayout.MaxWidth(90)))
                     {
-                        ((CurvedWorld.CurvedWorldBoundingBox)target).RecalculateBounds();
+                        ((CurvedWorldBoundingBox)target).RecalculateBounds();
                     }
                 }
                 EditorGUILayout.PropertyField(visualizeInEditor);

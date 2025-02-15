@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PoolFactory
+namespace Assets.PoolFactory
 {
     public class PrefabPoolFactory<T> : IPoolFactory<T> where T : MonoBehaviour {
 
