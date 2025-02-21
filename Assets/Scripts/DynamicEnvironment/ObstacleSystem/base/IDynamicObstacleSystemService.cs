@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.DynamicEnvironment.ObstacleSystem.@base
+namespace Assets.DynamicEnvironment.ObstacleSystem
 {
     public interface IDynamicObstacleSystemService
     {

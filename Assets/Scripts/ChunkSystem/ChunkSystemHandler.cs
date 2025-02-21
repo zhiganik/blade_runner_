@@ -19,13 +19,13 @@ namespace Assets.ChunkSystem
         [Space(5)]
         [SerializeField] private ChunkPlatform[] chunkPrefabs;
         [SerializeField] private List<ChunkPlatform> currentSpawnedChunks;
+        [SerializeField] private Transform rootParent;
         
         private DiChunkFactory _diChunkFactory;
         private Pool<ChunkPlatform>[] _platformPool;
         private CameraTest _player;
         
-        private readonly List<INotifyListener<ChunkCreationType>> _notifyListeners = 
-            new List<INotifyListener<ChunkCreationType>>();
+        private readonly List<INotifyListener<ChunkCreationType>> _notifyListeners = new();
         
         private event Action OnSpawnNewPlatform;
 
@@ -64,7 +64,7 @@ namespace Assets.ChunkSystem
                 var chunk = chunkPrefabs[index];
                 
                 _platformPool[index] = new Pool<ChunkPlatform>(new 
-                    DiPoolFactory<ChunkPlatform>(chunk.gameObject, _diChunkFactory), chunk.GetChunkCountInPool);
+                    DiPoolFactory<ChunkPlatform>(chunk.gameObject, _diChunkFactory, rootParent), chunk.GetChunkCountInPool);
             }
         }
 

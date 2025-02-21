@@ -1,4 +1,4 @@
-using Assets.DynamicEnvironment.ObstacleSystem.@base;
+using Assets.DynamicEnvironment.ObstacleSystem;
 using UnityEngine;
 
 namespace Assets.DynamicEnvironment.ObstacleSystem.DynamicObstacles

@@ -14,12 +14,13 @@ namespace Assets.PoolFactory
 
         private const string ParentName = "PoolHandler";
 
-        public DiPoolFactory(GameObject objectPrefab, PlaceholderFactory<T> factory)
+        public DiPoolFactory(GameObject objectPrefab, PlaceholderFactory<T> factory, Transform parent = null)
         {
             _objectPrefab = objectPrefab;
             _objectName = objectPrefab.name;
             _factory = factory;
-            CreateDefaultParent(objectPrefab.name);
+
+            CreateDefaultParent(objectPrefab.name, parent);
         }
 
         public T Create()
@@ -32,9 +33,10 @@ namespace Assets.PoolFactory
             return currentGameObject;
         }
 
-        private void CreateDefaultParent(string objectName)
+        private void CreateDefaultParent(string objectName, Transform rootParent = null)
         {
             _parent = new GameObject(objectName + ParentName);
+            if(rootParent != null) _parent.transform.SetParent(rootParent);
         }
     }
 }

@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.AudioSystem.AudioService;
 using Assets.ChunkSystem;
+using Assets.DynamicEnvironment.ObstacleSystem;
 using Assets.PoolFactory;
 using Assets.TestFolder;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.DynamicEnvironment.ObstacleSystem.@base
+namespace Assets.DynamicEnvironment.ObstacleSystem
 {
     public class DynamicObstacleSystem : MonoBehaviour, IDynamicObstacleSystemService, IAudioReceiver
     {
         [SerializeField] private DynamicObstacle[] obstaclePrefabs;
 
-        private Dictionary<DynamicObstacleType, Pool<DynamicObstacle>> poolDict = new Dictionary<DynamicObstacleType, Pool<DynamicObstacle>>();
+        private Dictionary<DynamicObstacleType, Pool<DynamicObstacle>> poolDict = new();
         private CameraTest _player;
         private IChunkSystemService _chunkSystemHandler;
         private IAudioSystemService _audioSystemService;

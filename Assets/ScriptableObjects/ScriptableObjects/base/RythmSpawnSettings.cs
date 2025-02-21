@@ -3,7 +3,7 @@ using Assets.Utils;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Assets.ScriptableObjects.ScriptableObjects.@base
+namespace Assets.ScriptableObjects.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "NewRythmSpawnSettings", menuName = "BladeRunner/RythmSpawnSettings")]
     public class RythmSpawnSettings : ScriptableObject
@@ -11,12 +11,12 @@ namespace Assets.ScriptableObjects.ScriptableObjects.@base
         [SerializeField] private AudioBandType audioBandType;
         [Range(0f, 1f)]
         [SerializeField] private float targetAmplitude;
-        [FormerlySerializedAs("preventDelay")]
         [Range(0f, 1f)]
         [SerializeField] private float spawnDelay;
 
         private DelayTimer _delayTimer;
-        private void Awake()
+
+        private void OnEnable()
         {
             _delayTimer = new DelayTimer(spawnDelay);
         }

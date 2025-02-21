@@ -8,6 +8,7 @@ namespace Assets.MonoInstallers
     {
         [SerializeField] private CameraTest playerPrefab;
         [SerializeField] private Transform spawnPoint;
+        [SerializeField] private Transform rootParent;
         
         public override void InstallBindings()
         {

@@ -1,8 +1,8 @@
 using Assets.PoolFactory;
-using Assets.ScriptableObjects.ScriptableObjects.@base;
+using Assets.ScriptableObjects.ScriptableObjects;
 using UnityEngine;
 
-namespace Assets.DynamicEnvironment.ObstacleSystem.@base
+namespace Assets.DynamicEnvironment.ObstacleSystem
 {
     public enum DynamicObstacleType
     {

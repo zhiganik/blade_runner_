@@ -47,7 +47,7 @@ namespace Assets.RunnerCharacter.SubComponentSystem.SubComponents
             var speed = movementData.Speed * Time.deltaTime;
 
             var moveTo = runner.transform.position;
-            moveTo.z +=  speed;
+            //moveTo.z +=  speed;
             moveTo.x = movementData.StrafeData.HorizontalVelocity;
             
             runner.RunnerRigidbody.MovePosition(moveTo);
