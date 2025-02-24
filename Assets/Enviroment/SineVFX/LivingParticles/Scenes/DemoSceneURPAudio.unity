@@ -3399,7 +3399,7 @@ MonoBehaviour:
   audioProfileInitialValue: 5
   audioProfileDecreasing: 1
   audioProfileDecreasingSpeed: 0.1
-  numberOfBands: 0
+  numberOfBands: 1
   finalBands8:
   - 0
   - 0
@@ -3466,8 +3466,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fbe6e9cffca737240b97af8977ae02ec, type: 3}
-  m_Resource: {fileID: 8300000, guid: fbe6e9cffca737240b97af8977ae02ec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c5a6af7adb029df4ba0967bc4de9e7ac, type: 3}
+  m_Resource: {fileID: 8300000, guid: c5a6af7adb029df4ba0967bc4de9e7ac, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3662,6 +3662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875211836}
   - component: {fileID: 1875211837}
+  - component: {fileID: 1875211838}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -3749,6 +3750,29 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1875211838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875211835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!4 &1882252238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2369285742866767923, guid: 50fd26847ea3ab04c8e61796979a1683, type: 3}
